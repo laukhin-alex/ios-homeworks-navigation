@@ -13,18 +13,20 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = .systemYellow
-        let postButton = UIButton(type: .custom) as UIButton
+        let postButton = UIButton(type: .system) as UIButton
         postButton.clipsToBounds = true
         postButton.backgroundColor = .blue
         postButton.layer.cornerRadius = 12
         postButton.setTitle("Показать пост", for: .normal)
         postButton.setTitleColor(.systemYellow, for: .normal)
-        postButton.frame = CGRect(x: 20, y: 300, width: 200,
-                                  height: 100)
-   
-        postButton.translatesAutoresizingMaskIntoConstraints = true
-        postButton.addTarget(self, action: #selector(makeAction), for: .touchUpInside)
+        postButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(postButton)
+        postButton.bottomAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
+        postButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
+        postButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
+        postButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        postButton.addTarget(self, action: #selector(makeAction), for: .touchUpInside)
+
     }
     @objc func makeAction(sender:UIButton!)  {
         let postViewController  = PostViewController()
