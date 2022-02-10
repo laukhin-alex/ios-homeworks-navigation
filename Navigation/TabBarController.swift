@@ -16,7 +16,6 @@ class TabBarController: UITabBarController {
         tabBar.tintColor = .blue
         setupViewControllers()
 
-        // Do any additional setup after loading the view.
     }
 
     func setupViewControllers() {
@@ -27,8 +26,8 @@ class TabBarController: UITabBarController {
     }
 
     fileprivate func createNavigationController(for rootViewController: UIViewController,
-                                         title: String,
-                                         image: UIImage) -> UIViewController {
+                                                title: String,
+                                                image: UIImage) -> UIViewController {
         let navigationController = UINavigationController(rootViewController: rootViewController)
         navigationController.tabBarItem.title = title
         navigationController.tabBarItem.image = image
@@ -36,5 +35,4 @@ class TabBarController: UITabBarController {
         rootViewController.navigationItem.title = title
         return navigationController
     }
-
 }

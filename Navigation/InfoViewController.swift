@@ -22,8 +22,6 @@ class InfoViewController: UIViewController {
         alertButton.setTitle("Показать ТРЕВОГУ!", for: .normal)
         alertButton.setTitleColor(.systemYellow, for: .normal)
         alertButton.addTarget(self, action: #selector(makeAlert), for: .touchUpInside)
-//        alertButton.frame = CGRect(x: 20, y: 30, width: 200,
-//                                   height: 100)
         alertButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(alertButton)
         alertButton.bottomAnchor.constraint(equalTo: self.view.lastBaselineAnchor, constant: -40).isActive = true
@@ -35,7 +33,6 @@ class InfoViewController: UIViewController {
     private func setupView() {
         self.view.backgroundColor = .systemYellow
 
-        //        self.activateConstraints()
     }
     @objc func makeAlert(sender:UIButton?)  {
         let alertController = UIAlertController(title: "ALERT!",
@@ -60,12 +57,6 @@ class InfoViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
 
     }
-//        private func activateConstraints() {
-//            alertButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-//            alertButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
-//            alertButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
-//            alertButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-//        }
 }
 
 

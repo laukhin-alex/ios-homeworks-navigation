@@ -16,11 +16,10 @@ class PostViewController: UIViewController {
         self.navigationItem.title = title.title
         let infoViewButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(action))
         navigationItem.rightBarButtonItem = infoViewButton
-        // Do any additional setup after loading the view.
     }
+
     @objc func action(sender:UIBarButtonItem!)  {
         let infoView = InfoViewController()
-
         self.navigationController?.present(infoView, animated: true, completion: nil)
     }
 }
