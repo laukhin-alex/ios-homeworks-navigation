@@ -11,8 +11,8 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        UITabBar.appearance().barTintColor = .systemBackground
+        view.backgroundColor = .white
+        UITabBar.appearance().barTintColor = .white
         tabBar.tintColor = .blue
         setupViewControllers()
 
@@ -31,6 +31,7 @@ class TabBarController: UITabBarController {
         let navigationController = UINavigationController(rootViewController: rootViewController)
         navigationController.tabBarItem.title = title
         navigationController.tabBarItem.image = image
+    
         navigationController.navigationBar.prefersLargeTitles = true
         rootViewController.navigationItem.title = title
         return navigationController

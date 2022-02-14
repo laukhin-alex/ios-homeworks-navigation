@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileHeaderView" customModule="Navigation" customModuleProvider="target">
+            <connections>
+                <outlet property="avatarImage" destination="Bah-Jr-amm" id="vur-zs-C0d"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="top" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REK-ou-e6K">
+                    <rect key="frame" x="155" y="27" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="Bah-Jr-amm">
+                    <rect key="frame" x="16" y="16" width="109" height="109"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="109" id="ZTs-dx-3oH"/>
+                        <constraint firstAttribute="height" constant="109" id="fcz-oX-hGy"/>
+                    </constraints>
+                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="small"/>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="tju-0C-dW9"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" systemColor="quaternarySystemFillColor"/>
+            <constraints>
+                <constraint firstAttribute="height" constant="500" id="JLv-4s-lFu"/>
+                <constraint firstItem="Bah-Jr-amm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="OzT-cO-Qd9"/>
+                <constraint firstItem="REK-ou-e6K" firstAttribute="leading" secondItem="Bah-Jr-amm" secondAttribute="trailing" constant="30" id="XaL-S3-Kvn"/>
+                <constraint firstItem="Bah-Jr-amm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="cSL-Rl-4n4"/>
+                <constraint firstItem="REK-ou-e6K" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="27" id="pwJ-gM-kiU"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="189.85507246376812" y="22.767857142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="avatar" width="1439" height="1439"/>
+        <systemColor name="quaternarySystemFillColor">
+            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.50196078431372548" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
