@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileHeaderView" customModule="Navigation" customModuleProvider="target">
             <connections>
                 <outlet property="avatarImage" destination="Bah-Jr-amm" id="vur-zs-C0d"/>
+                <outlet property="bottomConstraint" destination="stc-My-q7O" id="GG0-vp-Inp"/>
                 <outlet property="showStatusButton" destination="c8o-wS-joF" id="XHb-A7-U8e"/>
                 <outlet property="statusText" destination="Zoz-vZ-gsf" id="TGW-WE-Osb"/>
             </connections>
@@ -56,7 +57,6 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" systemColor="quaternarySystemFillColor"/>
             <constraints>
-                <constraint firstItem="c8o-wS-joF" firstAttribute="top" secondItem="Bah-Jr-amm" secondAttribute="bottom" constant="16" id="0z4-jR-f1D"/>
                 <constraint firstItem="tju-0C-dW9" firstAttribute="trailing" secondItem="c8o-wS-joF" secondAttribute="trailing" constant="16" id="3ES-j6-W83"/>
                 <constraint firstAttribute="height" constant="500" id="JLv-4s-lFu"/>
                 <constraint firstItem="Bah-Jr-amm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="OzT-cO-Qd9"/>
@@ -65,6 +65,7 @@
                 <constraint firstItem="Bah-Jr-amm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="cSL-Rl-4n4"/>
                 <constraint firstItem="REK-ou-e6K" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="27" id="pwJ-gM-kiU"/>
                 <constraint firstItem="c8o-wS-joF" firstAttribute="leading" secondItem="tju-0C-dW9" secondAttribute="leading" constant="16" id="q1D-KD-ISy"/>
+                <constraint firstItem="Zoz-vZ-gsf" firstAttribute="top" secondItem="REK-ou-e6K" secondAttribute="bottom" constant="42" id="qQe-nu-l0u"/>
                 <constraint firstItem="c8o-wS-joF" firstAttribute="top" secondItem="Zoz-vZ-gsf" secondAttribute="bottom" constant="34" id="stc-My-q7O"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

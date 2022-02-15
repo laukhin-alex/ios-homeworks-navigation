@@ -13,8 +13,13 @@ class ProfileHeaderView: UIView {
 
     @IBOutlet weak var showStatusButton: UIButton!
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+
     @IBOutlet weak var statusText: UILabel!
 
+    private var isExpanded = true
+
+    let statusTextChanging = UITextField()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,7 +61,23 @@ class ProfileHeaderView: UIView {
 
     @IBAction func buttonIsTyped(_ sender: UIButton) {
         print(statusText.text ?? "OK")
+
+        self.bottomConstraint.constant = self.isExpanded ? 100 : 34
+        UIView.animate(withDuration: 1) {
+            self.layoutIfNeeded()
+        } completion: { _ in
+            self.isExpanded.toggle()
+            if self.bottomConstraint.constant == 100 {
+                self.showStatusButton.setTitle("Set status", for: .normal)
+                self.addSubview(self.statusTextChanging)
+            } else {
+                self.showStatusButton.setTitle("Set status", for: .normal)
+            }
+        }
+
+
+
     }
 }
-    
+
 
