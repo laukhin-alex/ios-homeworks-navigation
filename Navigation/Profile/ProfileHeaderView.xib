@@ -11,6 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileHeaderView" customModule="Navigation" customModuleProvider="target">
             <connections>
                 <outlet property="avatarImage" destination="Bah-Jr-amm" id="vur-zs-C0d"/>
+                <outlet property="showStatusButton" destination="c8o-wS-joF" id="XHb-A7-U8e"/>
+                <outlet property="statusText" destination="Zoz-vZ-gsf" id="TGW-WE-Osb"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -18,9 +20,9 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REK-ou-e6K">
-                    <rect key="frame" x="155" y="27" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alehandro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REK-ou-e6K">
+                    <rect key="frame" x="155" y="27" width="89" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -32,16 +34,35 @@
                     </constraints>
                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="small"/>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zoz-vZ-gsf">
+                    <rect key="frame" x="155" y="90" width="36" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" systemColor="systemGrayColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8o-wS-joF">
+                    <rect key="frame" x="16" y="141" width="382" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="day-K0-DZr"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Show status"/>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="tju-0C-dW9"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" systemColor="quaternarySystemFillColor"/>
             <constraints>
+                <constraint firstItem="c8o-wS-joF" firstAttribute="top" secondItem="Bah-Jr-amm" secondAttribute="bottom" constant="16" id="0z4-jR-f1D"/>
+                <constraint firstItem="tju-0C-dW9" firstAttribute="trailing" secondItem="c8o-wS-joF" secondAttribute="trailing" constant="16" id="3ES-j6-W83"/>
                 <constraint firstAttribute="height" constant="500" id="JLv-4s-lFu"/>
                 <constraint firstItem="Bah-Jr-amm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="OzT-cO-Qd9"/>
+                <constraint firstItem="Zoz-vZ-gsf" firstAttribute="leading" secondItem="REK-ou-e6K" secondAttribute="leading" id="VJN-hF-m74"/>
                 <constraint firstItem="REK-ou-e6K" firstAttribute="leading" secondItem="Bah-Jr-amm" secondAttribute="trailing" constant="30" id="XaL-S3-Kvn"/>
                 <constraint firstItem="Bah-Jr-amm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="cSL-Rl-4n4"/>
                 <constraint firstItem="REK-ou-e6K" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="27" id="pwJ-gM-kiU"/>
+                <constraint firstItem="c8o-wS-joF" firstAttribute="leading" secondItem="tju-0C-dW9" secondAttribute="leading" constant="16" id="q1D-KD-ISy"/>
+                <constraint firstItem="c8o-wS-joF" firstAttribute="top" secondItem="Zoz-vZ-gsf" secondAttribute="bottom" constant="34" id="stc-My-q7O"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="189.85507246376812" y="22.767857142857142"/>
@@ -51,6 +72,9 @@
         <image name="avatar" width="1439" height="1439"/>
         <systemColor name="quaternarySystemFillColor">
             <color red="0.45490196078431372" green="0.45490196078431372" blue="0.50196078431372548" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

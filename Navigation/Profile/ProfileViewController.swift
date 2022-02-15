@@ -18,11 +18,10 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .lightGray
+        self.view.backgroundColor = .systemBackground
         view.addSubview(profileHeaderView)
         self.setupView()
-        self.setupNaigationBar()
-
+        self.setupNavigationBar()
 
     }
 
@@ -32,7 +31,7 @@ class ProfileViewController: UIViewController {
 
     }
 
-    private func setupNaigationBar() {
+    private func setupNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.title = "Profile"
     }
@@ -47,7 +46,4 @@ class ProfileViewController: UIViewController {
         self.profileHeaderView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
 
     }
-
-    
-
 }
