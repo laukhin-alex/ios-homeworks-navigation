@@ -54,6 +54,9 @@ class ProfileHeaderView: UIView {
         return view
     }
 
+    @IBAction func buttonIsTyped(_ sender: UIButton) {
+        print(statusText.text ?? "OK")
+    }
 }
     
 

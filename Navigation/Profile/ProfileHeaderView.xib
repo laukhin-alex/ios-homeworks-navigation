@@ -47,6 +47,9 @@
                     </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Show status"/>
+                    <connections>
+                        <action selector="buttonIsTyped:" destination="-1" eventType="touchUpInside" id="WEx-bE-1Ek"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="tju-0C-dW9"/>
