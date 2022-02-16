@@ -83,9 +83,6 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
                 self.showStatusButton.setTitle("Show status", for: .normal)
 
                 self.statusText.text = self.statusTextChanging.text ?? "Wrong type"
-                if self.statusText.text == "" {
-                    self .statusText.text = " "
-                }
                 self.statusTextChanging.isHidden = true
             }
         }
