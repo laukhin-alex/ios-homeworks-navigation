@@ -21,22 +21,23 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
 
     private var isExpanded = true
 
-    private var statusTextPrivate: String = " "
-
-
-    //    let statusTextChanging = UITextField(frame: CGRect(x: 150, y: 145, width: 200, height: 40))
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()
         self.statusTextChanging.isHidden = true
+        self.statusTextChanging.delegate = self
 
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
 
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (touches.first) != nil {
+            endEditing(true)
+        }
+        super.touchesBegan(touches, with: event)
     }
 
     private func setupView() {
@@ -80,15 +81,13 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
                 self.statusTextChangingSetup()
                 self.statusTextChanging.isHidden = false
             } else {
-                self.showStatusButton.setTitle("Show status", for: .normal)
-
-                self.statusText.text = self.statusTextChanging.text ?? "Wrong type"
                 self.statusTextChanging.isHidden = true
+                self.showStatusButton.setTitle("Show status", for: .normal)
+                self.statusText.text = self.statusTextChanging.text ?? "Wrong type"
             }
         }
     }
     private func statusTextChangingSetup() {
-
 
         self.statusTextChanging.heightAnchor.constraint(equalToConstant: 40).isActive = true
         self.statusTextChanging.layer.cornerRadius = 12
@@ -106,6 +105,10 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         self.statusTextChanging.layer.borderWidth = 1
         self.statusTextChanging.delegate = self
 
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.statusTextChanging.resignFirstResponder()
+        return true
     }
 }
 
