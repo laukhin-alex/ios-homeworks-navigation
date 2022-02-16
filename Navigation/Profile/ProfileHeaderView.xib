@@ -11,8 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileHeaderView" customModule="Navigation" customModuleProvider="target">
             <connections>
                 <outlet property="avatarImage" destination="Bah-Jr-amm" id="vur-zs-C0d"/>
+                <outlet property="bottomConstraint" destination="stc-My-q7O" id="GG0-vp-Inp"/>
                 <outlet property="showStatusButton" destination="c8o-wS-joF" id="XHb-A7-U8e"/>
                 <outlet property="statusText" destination="Zoz-vZ-gsf" id="TGW-WE-Osb"/>
+                <outlet property="statusTextChanging" destination="2Tc-Il-4lb" id="PEo-cV-wAJ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -51,20 +53,32 @@
                         <action selector="buttonIsTyped:" destination="-1" eventType="touchUpInside" id="WEx-bE-1Ek"/>
                     </connections>
                 </button>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2Tc-Il-4lb">
+                    <rect key="frame" x="155" y="149" width="200" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="5EG-BP-zmj"/>
+                        <constraint firstAttribute="width" constant="200" id="f0G-6U-eoQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <viewLayoutGuide key="safeArea" id="tju-0C-dW9"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" systemColor="quaternarySystemFillColor"/>
             <constraints>
-                <constraint firstItem="c8o-wS-joF" firstAttribute="top" secondItem="Bah-Jr-amm" secondAttribute="bottom" constant="16" id="0z4-jR-f1D"/>
+                <constraint firstItem="2Tc-Il-4lb" firstAttribute="top" secondItem="Zoz-vZ-gsf" secondAttribute="bottom" constant="42" id="0mV-hU-Ptl"/>
                 <constraint firstItem="tju-0C-dW9" firstAttribute="trailing" secondItem="c8o-wS-joF" secondAttribute="trailing" constant="16" id="3ES-j6-W83"/>
                 <constraint firstAttribute="height" constant="500" id="JLv-4s-lFu"/>
                 <constraint firstItem="Bah-Jr-amm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="OzT-cO-Qd9"/>
                 <constraint firstItem="Zoz-vZ-gsf" firstAttribute="leading" secondItem="REK-ou-e6K" secondAttribute="leading" id="VJN-hF-m74"/>
                 <constraint firstItem="REK-ou-e6K" firstAttribute="leading" secondItem="Bah-Jr-amm" secondAttribute="trailing" constant="30" id="XaL-S3-Kvn"/>
                 <constraint firstItem="Bah-Jr-amm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="cSL-Rl-4n4"/>
+                <constraint firstItem="2Tc-Il-4lb" firstAttribute="leading" secondItem="Zoz-vZ-gsf" secondAttribute="leading" id="eRK-tS-2Ph"/>
                 <constraint firstItem="REK-ou-e6K" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="27" id="pwJ-gM-kiU"/>
                 <constraint firstItem="c8o-wS-joF" firstAttribute="leading" secondItem="tju-0C-dW9" secondAttribute="leading" constant="16" id="q1D-KD-ISy"/>
+                <constraint firstItem="Zoz-vZ-gsf" firstAttribute="top" secondItem="REK-ou-e6K" secondAttribute="bottom" constant="42" id="qQe-nu-l0u"/>
                 <constraint firstItem="c8o-wS-joF" firstAttribute="top" secondItem="Zoz-vZ-gsf" secondAttribute="bottom" constant="34" id="stc-My-q7O"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
