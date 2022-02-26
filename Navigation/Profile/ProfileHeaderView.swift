@@ -25,7 +25,7 @@ final class ProfileHeaderView: UIView {
 
     private lazy var fullNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Alehandro"
+        label.text = "Alekhandro"
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -50,7 +50,7 @@ final class ProfileHeaderView: UIView {
         return textView
     }()
 
-    private lazy var setStatusButton: UIButton = {
+    private lazy var statusButton: UIButton = {
         let button = UIButton()
         button.setTitle("Show status", for: .normal)
         button.backgroundColor = .systemBlue
@@ -98,7 +98,7 @@ final class ProfileHeaderView: UIView {
         self.addSubview(self.avatarImageView)
         self.addSubview(self.fullNameLabel)
         self.addSubview(self.statusLabel)
-        self.addSubview(self.setStatusButton)
+        self.addSubview(self.statusButton)
         self.addSubview(self.statusTextField)
         let topAvatarImageConstraint = self.avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16)
         let leadingAvatarImageConstraint = self.avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
@@ -107,11 +107,11 @@ final class ProfileHeaderView: UIView {
         let topFullNameLabelConstraint = self.fullNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 27)
         let leadingFullNameLabelConstraint = self.fullNameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 182)
         let trailingFullNameLabelConstraint = self.fullNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
-        self.topSetStatusButtonOn = self.setStatusButton.topAnchor.constraint(equalTo: self.avatarImageView.bottomAnchor, constant: 16)
+        self.topSetStatusButtonOn = self.statusButton.topAnchor.constraint(equalTo: self.avatarImageView.bottomAnchor, constant: 16)
         self.topSetStatusButtonOn?.priority = UILayoutPriority(rawValue: 999)
-        let leadingSetStatusButton = self.setStatusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
-        let trailingSetStatusButton = self.setStatusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
-        let heightSetStatusButton = self.setStatusButton.heightAnchor.constraint(equalToConstant: 50)
+        let leadingSetStatusButton = self.statusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
+        let trailingSetStatusButton = self.statusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
+        let heightSetStatusButton = self.statusButton.heightAnchor.constraint(equalToConstant: 50)
         let bottomStatusLabel = self.statusLabel.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: -18)
         let leadingStatusLabel = self.statusLabel.leadingAnchor.constraint(equalTo: fullNameLabel.leadingAnchor)
         let trailingStatusLabel = self.statusLabel.trailingAnchor.constraint(equalTo: fullNameLabel.trailingAnchor)
@@ -127,29 +127,31 @@ final class ProfileHeaderView: UIView {
     @objc private func didTapSetStatusButton() {
         if self.statusTextField.isHidden {
             self.statusTextField.alpha = 1
-
+            
             NSLayoutConstraint.deactivate([self.topSetStatusButtonOff].compactMap({ $0 }))
             let topConstraint = self.statusTextField.topAnchor.constraint(equalTo: self.statusLabel.bottomAnchor, constant: 27)
             let leadingConstraint = self.statusTextField.leadingAnchor.constraint(equalTo: self.statusLabel.leadingAnchor)
             let trailingConstraint = self.statusTextField.trailingAnchor.constraint(equalTo: self.statusLabel.trailingAnchor)
             let heightStatusTextFieldConstraint = self.statusTextField.heightAnchor.constraint(equalToConstant: 34)
-            self.topSetStatusButtonOn = self.setStatusButton.topAnchor.constraint(equalTo: self.avatarImageView.bottomAnchor, constant: 70)
+
+            self.topSetStatusButtonOn = self.statusButton.topAnchor.constraint(equalTo: self.avatarImageView.bottomAnchor, constant: 70)
+
             NSLayoutConstraint.activate([
                 topConstraint, leadingConstraint, trailingConstraint, heightStatusTextFieldConstraint,
                 self.topSetStatusButtonOn
             ].compactMap({ $0 }))
-            self.setStatusButton.setTitle("Set status", for: .normal)
+            self.statusButton.setTitle("Set status", for: .normal)
         } else {
             self.statusTextField.isHidden = false
             self.statusTextField.alpha = 0
-            self.setStatusButton.setTitle("Show status", for: .normal)
+            self.statusButton.setTitle("Show status", for: .normal)
             NSLayoutConstraint.deactivate([self.topSetStatusButtonOn].compactMap({ $0 }))
             if self.statusTextField.text != "" {
                 self.statusLabel.text = self.statusTextField.text
                 self.statusTextField.text = .none
 
             }
-            self.topSetStatusButtonOff = self.setStatusButton.topAnchor.constraint(equalTo: self.avatarImageView.bottomAnchor, constant: 16)
+            self.topSetStatusButtonOff = self.statusButton.topAnchor.constraint(equalTo: self.avatarImageView.bottomAnchor, constant: 16)
 
             NSLayoutConstraint.activate([self.topSetStatusButtonOff].compactMap({ $0 }))
         }
