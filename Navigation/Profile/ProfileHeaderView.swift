@@ -66,8 +66,12 @@ final class ProfileHeaderView: UIView {
 
     private lazy var statusTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Waiting with something..."
-        textField.returnKeyType = .done
+        textField.placeholder = "Good news, everybody!"
+        textField.delegate = self
+        textField.keyboardType = .default
+        textField.returnKeyType = UIReturnKeyType.done
+        textField.clearButtonMode = UITextField.ViewMode.whileEditing
+        textField.keyboardAppearance = .default
         textField.autocapitalizationType = .words
         textField.font = .systemFont(ofSize: 15)
         textField.textColor = .systemGray2
@@ -78,6 +82,7 @@ final class ProfileHeaderView: UIView {
         textField.clearButtonMode = .always
         textField.alpha = 0
         textField.translatesAutoresizingMaskIntoConstraints = false
+
         return textField
     }()
 
@@ -92,6 +97,13 @@ final class ProfileHeaderView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (touches.first) != nil {
+            endEditing(true)
+        }
+        super.touchesBegan(touches, with: event)
     }
 
     private func drawSelf() {
@@ -159,4 +171,14 @@ final class ProfileHeaderView: UIView {
             self?.statusTextField.isHidden.toggle()
         }
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.statusTextField.resignFirstResponder()
+        return true
+    }
+}
+
+extension ProfileHeaderView: UITextFieldDelegate {
+
+
+
 }
