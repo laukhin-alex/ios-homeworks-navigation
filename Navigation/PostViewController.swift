@@ -18,7 +18,7 @@ class PostViewController: UIViewController {
         navigationItem.rightBarButtonItem = infoViewButton
     }
 
-    @objc func action(sender:UIBarButtonItem!)  {
+    @objc func action(sender: UIBarButtonItem!)  {
         let infoView = InfoViewController()
         self.navigationController?.present(infoView, animated: true, completion: nil)
     }
