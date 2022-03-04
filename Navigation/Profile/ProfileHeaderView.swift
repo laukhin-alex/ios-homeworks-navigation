@@ -66,7 +66,7 @@ final class ProfileHeaderView: UIView {
 
     private lazy var statusTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Good news, everybody!"
+        textField.placeholder = "White your status here"
         textField.delegate = self
         textField.keyboardType = .default
         textField.returnKeyType = UIReturnKeyType.done
@@ -157,6 +157,7 @@ final class ProfileHeaderView: UIView {
             self.statusTextField.isHidden = false
             self.statusTextField.alpha = 0
             self.statusButton.setTitle("Show status", for: .normal)
+            self.statusTextField.endEditing(true)
             NSLayoutConstraint.deactivate([self.topSetStatusButtonOn].compactMap({ $0 }))
             if self.statusTextField.text != "" {
                 self.statusLabel.text = self.statusTextField.text
