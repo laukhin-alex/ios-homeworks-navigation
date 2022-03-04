@@ -157,6 +157,7 @@ final class ProfileHeaderView: UIView {
             self.statusTextField.isHidden = false
             self.statusTextField.alpha = 0
             self.statusButton.setTitle("Show status", for: .normal)
+            self.statusTextField.endEditing(true)
             NSLayoutConstraint.deactivate([self.topSetStatusButtonOn].compactMap({ $0 }))
             if self.statusTextField.text != "" {
                 self.statusLabel.text = self.statusTextField.text

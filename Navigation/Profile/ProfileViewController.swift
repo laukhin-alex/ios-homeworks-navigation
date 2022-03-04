@@ -7,7 +7,15 @@
 
 import UIKit
 
-final class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+
 
     private lazy var profileHeaderView: ProfileHeaderView = {
         let view = ProfileHeaderView(frame: .zero)
@@ -17,18 +25,7 @@ final class ProfileViewController: UIViewController {
         return view
     }()
 
-    private lazy var newButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Непонятная кнопка!", for: .normal)
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 4
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 4, height: 4)
-        button.layer.shadowRadius = 4
-        button.layer.shadowOpacity = 0.7
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+
 
     private var heightConstraint: NSLayoutConstraint?
 
@@ -52,22 +49,18 @@ final class ProfileViewController: UIViewController {
     private func setupView() {
         self.view.backgroundColor = .white
         self.view.addSubview(self.profileHeaderView)
-        self.view.addSubview(self.newButton)
+//        self.view.addSubview(self.newButton)
 
         let topConstraint = self.profileHeaderView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
         let leadingConstraint = self.profileHeaderView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
         let trailingConstraint = self.profileHeaderView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         self.heightConstraint = self.profileHeaderView.heightAnchor.constraint(equalToConstant: 245)
         
-        let bottomNewButtonConstraint = self.newButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
-        let leadingNewButtonConstraint = self.newButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16)
-        let trailingNewButtonConstraint = self.newButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
-        let heightNewButtonConstraint = self.newButton.heightAnchor.constraint(equalToConstant: 50)
+
 
         NSLayoutConstraint.activate([
             topConstraint, leadingConstraint, trailingConstraint, self.heightConstraint,
-            bottomNewButtonConstraint, leadingNewButtonConstraint, trailingNewButtonConstraint,
-            heightNewButtonConstraint
+
         ].compactMap({ $0 }))
     }
 }
