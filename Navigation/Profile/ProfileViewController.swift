@@ -41,8 +41,9 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
-        self.setupView()
+        self.setupViewTableView()
         self.addPosts()
+        self.setupView()
     }
 
     private func setupNavigationBar() {
@@ -59,12 +60,28 @@ final class ProfileViewController: UIViewController {
         self.navigationController?.navigationBar.standardAppearance = navBarAppearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
     }
-
     private func setupView() {
+        self.view.backgroundColor = .white
+        self.view.addSubview(self.profileHeaderView)
+
+
+        let topConstraint = self.profileHeaderView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
+        let leadingConstraint = self.profileHeaderView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
+        let trailingConstraint = self.profileHeaderView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        self.heightConstraint = self.profileHeaderView.heightAnchor.constraint(equalToConstant: 245)
+
+
+
+        NSLayoutConstraint.activate([
+            topConstraint, leadingConstraint, trailingConstraint, self.heightConstraint
+        ].compactMap({ $0 }))
+    }
+
+    private func setupViewTableView() {
         self.view.backgroundColor = .systemGray6
         self.view.addSubview(self.tableView)
 
-        let topConstraint = self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
+        let topConstraint = self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 300)
         let leadingConstraint = self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
         let trailingConstraint = self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         let bottomConstraint = self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
@@ -132,13 +149,13 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setup(with: viewModel)
         return cell
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var headerView = UIView()
-        if section == 0 {
-            headerView = ProfileHeaderView()
-        }
-        return headerView
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        var headerView = UIView()
+//        if section == 0 {
+//            headerView = ProfileHeaderView()
+//        }
+//        return headerView
+//    }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return  250

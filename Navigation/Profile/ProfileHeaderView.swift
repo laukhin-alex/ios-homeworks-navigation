@@ -17,14 +17,11 @@ final class ProfileHeaderView: UIView {
         let imageView = UIImageView(image: UIImage(named: "avatar"))
         imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
-        imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 3
+        imageView.layer.borderColor = UIColor.white.cgColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
-
-    var heightConstraint: NSLayoutConstraint?
 
     private lazy var fullNameLabel: UILabel = {
         let label = UILabel()
@@ -43,7 +40,7 @@ final class ProfileHeaderView: UIView {
         return label
     }()
 
-    private lazy var statusTextViewNew: UITextView = {
+    private lazy var statusTextView1: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .lightGray
         textView.font = .systemFont(ofSize: 14)
@@ -69,7 +66,7 @@ final class ProfileHeaderView: UIView {
 
     private lazy var statusTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Good news, everybody!"
+        textField.placeholder = "White your status here"
         textField.delegate = self
         textField.keyboardType = .default
         textField.returnKeyType = UIReturnKeyType.done
@@ -96,9 +93,8 @@ final class ProfileHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.drawSelf()
-        self.setupView()
-        let button = UITapGestureRecognizer(target: self, action: #selector(didTapShowStatusButton(textFieldIsVisible:completion:)))
-        self.addGestureRecognizer(button)
+        let t = UITapGestureRecognizer(target: self, action: #selector(didTapSetStatusButton))
+        self.addGestureRecognizer(t)
     }
 
     required init?(coder: NSCoder) {
@@ -111,8 +107,6 @@ final class ProfileHeaderView: UIView {
         }
         super.touchesBegan(touches, with: event)
     }
-
-
 
     private func drawSelf() {
         self.addSubview(self.avatarImageView)
@@ -147,7 +141,7 @@ final class ProfileHeaderView: UIView {
     @objc private func didTapSetStatusButton() {
         if self.statusTextField.isHidden {
             self.statusTextField.alpha = 1
-            
+
             NSLayoutConstraint.deactivate([self.topSetStatusButtonOff].compactMap({ $0 }))
             let topConstraint = self.statusTextField.topAnchor.constraint(equalTo: self.statusLabel.bottomAnchor, constant: 27)
             let leadingConstraint = self.statusTextField.leadingAnchor.constraint(equalTo: self.statusLabel.leadingAnchor)
@@ -184,30 +178,6 @@ final class ProfileHeaderView: UIView {
         self.statusTextField.resignFirstResponder()
         return true
     }
-
-    @objc func didTapShowStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void) {
-        self.heightConstraint?.constant = textFieldIsVisible ? 300 : 245
-        UIView.animate(withDuration: 0.3, delay: 0.1) {
-            self.layoutIfNeeded()
-        } completion: { _ in
-            completion()
-        }
-    }
-
-    
-private func setupView() {
-    self.backgroundColor = .red
-
-    let topConstraint = self.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor)
-    let leadingConstraint = self.leadingAnchor.constraint(equalTo: self.leadingAnchor)
-    let trailingConstraint = self.trailingAnchor.constraint(equalTo: self.trailingAnchor)
-    self.heightConstraint = self.heightAnchor.constraint(equalToConstant: 245)
-
-    NSLayoutConstraint.activate([
-        topConstraint, leadingConstraint, trailingConstraint, self.heightConstraint,
-
-    ].compactMap({ $0 }))
-}
 }
 
 extension ProfileHeaderView: UITextFieldDelegate {
@@ -215,4 +185,3 @@ extension ProfileHeaderView: UITextFieldDelegate {
 
 
 }
-
