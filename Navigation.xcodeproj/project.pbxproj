@@ -62,6 +62,33 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		1FE7945127DA2AA20099321E /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				1FF73D3827B3D02700226299 /* Assets.xcassets */,
+				1FF73D3A27B3D02700226299 /* LaunchScreen.storyboard */,
+				1FF73D3D27B3D02700226299 /* Info.plist */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		1FE7945227DA2D090099321E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1FF73D4F27B4454F00226299 /* Post.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1FE7945327DA2D200099321E /* Delegats */ = {
+			isa = PBXGroup;
+			children = (
+				1FF73D2F27B3D02400226299 /* AppDelegate.swift */,
+				1FF73D3127B3D02400226299 /* SceneDelegate.swift */,
+			);
+			path = Delegats;
+			sourceTree = "<group>";
+		};
 		1FF73D2327B3D02400226299 = {
 			isa = PBXGroup;
 			children = (
@@ -81,17 +108,14 @@
 		1FF73D2E27B3D02400226299 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				1FF73D2F27B3D02400226299 /* AppDelegate.swift */,
-				1FF73D3127B3D02400226299 /* SceneDelegate.swift */,
+				1FE7945327DA2D200099321E /* Delegats */,
 				1FF73D4327B3D1AA00226299 /* TabBarController.swift */,
 				1FC4B5DF27CA9538008AFE01 /* Profile */,
 				1FF73D4527B3DAC300226299 /* FeedViewController.swift */,
-				1FF73D4F27B4454F00226299 /* Post.swift */,
-				1FF73D4927B3E24D00226299 /* PostViewController.swift */,
+				1FE7945227DA2D090099321E /* Models */,
 				1FF73D4B27B3F6B900226299 /* InfoViewController.swift */,
-				1FF73D3827B3D02700226299 /* Assets.xcassets */,
-				1FF73D3A27B3D02700226299 /* LaunchScreen.storyboard */,
-				1FF73D3D27B3D02700226299 /* Info.plist */,
+				1FF73D4927B3E24D00226299 /* PostViewController.swift */,
+				1FE7945127DA2AA20099321E /* resources */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";

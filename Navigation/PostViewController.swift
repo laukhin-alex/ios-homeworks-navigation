@@ -12,8 +12,8 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .green
-        let title = Post.init(title: "Мой ПОСТ? МОЙ!")
-        self.navigationItem.title = title.title
+        let title = "Мой ПОСТ? МОЙ!"
+        self.navigationItem.title = title
         let infoViewButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(action))
         navigationItem.rightBarButtonItem = infoViewButton
     }

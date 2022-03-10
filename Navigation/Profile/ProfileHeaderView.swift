@@ -17,11 +17,14 @@ final class ProfileHeaderView: UIView {
         let imageView = UIImageView(image: UIImage(named: "avatar"))
         imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
-        imageView.layer.borderWidth = 3
         imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.borderWidth = 3
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+
+
+    var heightConstraint: NSLayoutConstraint?
 
     private lazy var fullNameLabel: UILabel = {
         let label = UILabel()
@@ -40,7 +43,7 @@ final class ProfileHeaderView: UIView {
         return label
     }()
 
-    private lazy var statusTextView1: UITextView = {
+    private lazy var statusTextViewNew: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .lightGray
         textView.font = .systemFont(ofSize: 14)
@@ -93,6 +96,9 @@ final class ProfileHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.drawSelf()
+        self.setupView()
+        let button = UITapGestureRecognizer(target: self, action: #selector(didTapShowStatusButton(textFieldIsVisible:completion:)))
+        self.addGestureRecognizer(button)
     }
 
     required init?(coder: NSCoder) {
@@ -105,6 +111,8 @@ final class ProfileHeaderView: UIView {
         }
         super.touchesBegan(touches, with: event)
     }
+
+
 
     private func drawSelf() {
         self.addSubview(self.avatarImageView)
@@ -176,6 +184,30 @@ final class ProfileHeaderView: UIView {
         self.statusTextField.resignFirstResponder()
         return true
     }
+
+    @objc func didTapShowStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void) {
+        self.heightConstraint?.constant = textFieldIsVisible ? 300 : 245
+        UIView.animate(withDuration: 0.3, delay: 0.1) {
+            self.layoutIfNeeded()
+        } completion: { _ in
+            completion()
+        }
+    }
+
+    
+private func setupView() {
+    self.backgroundColor = .red
+
+    let topConstraint = self.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor)
+    let leadingConstraint = self.leadingAnchor.constraint(equalTo: self.leadingAnchor)
+    let trailingConstraint = self.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+    self.heightConstraint = self.heightAnchor.constraint(equalToConstant: 245)
+
+    NSLayoutConstraint.activate([
+        topConstraint, leadingConstraint, trailingConstraint, self.heightConstraint,
+
+    ].compactMap({ $0 }))
+}
 }
 
 extension ProfileHeaderView: UITextFieldDelegate {
@@ -183,3 +215,4 @@ extension ProfileHeaderView: UITextFieldDelegate {
 
 
 }
+
