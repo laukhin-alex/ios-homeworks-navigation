@@ -14,7 +14,7 @@ final class ProfileViewController: UIViewController {
     private lazy var profileHeaderView: ProfileHeaderView = {
         let view = ProfileHeaderView(frame: .zero)
         view.backgroundColor = .lightGray
-        view.translatesAutoresizingMaskIntoConstraints = false
+
         return view
     }()
 
@@ -44,7 +44,10 @@ final class ProfileViewController: UIViewController {
         self.setupViewTableView()
         self.addPosts()
 
-    }
+        }
+
+
+
 
     private func setupNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -126,7 +129,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView =  ProfileHeaderView(frame: .zero)
+        let headerView =  profileHeaderView
         headerView.backgroundColor = .systemGray6
         headerView.heightAnchor.constraint(equalToConstant: 300).isActive = true
 

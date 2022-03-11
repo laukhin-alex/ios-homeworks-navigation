@@ -97,8 +97,8 @@ final class ProfileHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.drawSelf()
-        let t = UITapGestureRecognizer(target: self, action: #selector(didTapSetStatusButton))
-        self.addGestureRecognizer(t)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapSetStatusButton))
+        self.addGestureRecognizer(tap)
     }
 
     required init?(coder: NSCoder) {
