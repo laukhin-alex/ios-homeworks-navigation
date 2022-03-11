@@ -67,7 +67,6 @@
 			children = (
 				1FF73D3827B3D02700226299 /* Assets.xcassets */,
 				1FF73D3A27B3D02700226299 /* LaunchScreen.storyboard */,
-				1FF73D3D27B3D02700226299 /* Info.plist */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -108,6 +107,7 @@
 		1FF73D2E27B3D02400226299 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				1FF73D3D27B3D02700226299 /* Info.plist */,
 				1FE7945327DA2D200099321E /* Delegats */,
 				1FF73D4327B3D1AA00226299 /* TabBarController.swift */,
 				1FC4B5DF27CA9538008AFE01 /* Profile */,

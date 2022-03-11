@@ -13,6 +13,8 @@ protocol ProfileHeaderViewProtocol: AnyObject {
 
 final class ProfileHeaderView: UIView {
 
+
+
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "avatar"))
         imageView.layer.cornerRadius = 75
@@ -30,6 +32,8 @@ final class ProfileHeaderView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+
+    private var heightConstraint: NSLayoutConstraint?
 
     private lazy var statusLabel: UILabel = {
         let label = UILabel()
@@ -114,6 +118,7 @@ final class ProfileHeaderView: UIView {
         self.addSubview(self.statusLabel)
         self.addSubview(self.statusButton)
         self.addSubview(self.statusTextField)
+        self.delegate = self
         let topAvatarImageConstraint = self.avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16)
         let leadingAvatarImageConstraint = self.avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
         let widthAvatarImageConstraint = self.avatarImageView.widthAnchor.constraint(equalToConstant: 150)
@@ -180,8 +185,16 @@ final class ProfileHeaderView: UIView {
     }
 }
 
-extension ProfileHeaderView: UITextFieldDelegate {
+extension ProfileHeaderView: UITextFieldDelegate {}
 
+extension ProfileHeaderView: ProfileHeaderViewProtocol {
 
-
+    func didTapShowStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void) {
+        self.heightConstraint?.constant = textFieldIsVisible ? 300 : 245
+        UIView.animate(withDuration: 0.3, delay: 0.1) {
+            self.layoutIfNeeded()
+        } completion: { _ in
+            completion()
+        }
+    }
 }
