@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProfileTableHeaderViewCell: UITableViewCell  {
+final class PostTableViewCell: UITableViewCell  {
 
     struct ViewModel {
         let author, description, image: String

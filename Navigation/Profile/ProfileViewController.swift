@@ -26,7 +26,7 @@ final class ProfileViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
-        tableView.register(ProfileTableHeaderViewCell.self, forCellReuseIdentifier: "ArticleCell")
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "ArticleCell")
         tableView.backgroundColor = .white
         tableView.layer.borderColor = UIColor.gray.cgColor
         tableView.layer.borderWidth = 0.5
@@ -113,11 +113,11 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as? ProfileTableHeaderViewCell else { let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as? PostTableViewCell else { let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
         return cell
     }
         let article = self.dataSource[indexPath.row]
-        let viewModel = ProfileTableHeaderViewCell.ViewModel(author: article.author,
+        let viewModel = PostTableViewCell.ViewModel(author: article.author,
                                                              description: article.description,
                                                              image: article.image,
                                                              likes: article.likes,
@@ -126,18 +126,15 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView =  ProfileHeaderView()
-        headerView.backgroundColor = .systemGray
- 
-        headerView.heightAnchor.constraint(equalToConstant: 245).isActive = true
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-
+        let headerView =  ProfileHeaderView(frame: .zero)
+        headerView.backgroundColor = .systemGray6
+        headerView.heightAnchor.constraint(equalToConstant: 300).isActive = true
 
         return headerView
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return  250
+        return  300
     }
 
 }
