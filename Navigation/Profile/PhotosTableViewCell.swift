@@ -9,15 +9,10 @@ import UIKit
 
 class PhotosTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    struct ViewModel {
+        let image: String
+        let likes, views: Int
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
