@@ -124,7 +124,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as? PostTableViewCell else { let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
         return cell
     }
-        let article = self.dataSource[indexPath.row]
+        let article = self.dataSource[indexPath.row - 1]
         let viewModel = PostTableViewCell.ViewModel(author: article.author,
                                                              description: article.description,
                                                              image: article.image,
@@ -134,6 +134,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView =  profileHeaderView
         headerView.backgroundColor = .systemGray6
