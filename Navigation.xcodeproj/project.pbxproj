@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1FA976BB27DD2A570082DA82 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA976BA27DD2A570082DA82 /* PhotosTableViewCell.swift */; };
+		1FA976BF27DFA72E0082DA82 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA976BE27DFA72E0082DA82 /* PhotosViewController.swift */; };
 		1FC4B5E127CAA305008AFE01 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC4B5E027CAA305008AFE01 /* LogInViewController.swift */; };
 		1FC4B60527CEAD7E008AFE01 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC4B60427CEAD7E008AFE01 /* PostTableViewCell.swift */; };
 		1FF43BA227C12240000E6DEE /* ProfileTableHederView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF43BA127C12240000E6DEE /* ProfileTableHederView.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		1FA976BA27DD2A570082DA82 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
+		1FA976BE27DFA72E0082DA82 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		1FC4B5E027CAA305008AFE01 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		1FC4B60427CEAD7E008AFE01 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		1FF43BA127C12240000E6DEE /* ProfileTableHederView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHederView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				1FF43BA127C12240000E6DEE /* ProfileTableHederView.swift */,
 				1FC4B5E027CAA305008AFE01 /* LogInViewController.swift */,
 				1FA976BA27DD2A570082DA82 /* PhotosTableViewCell.swift */,
+				1FA976BE27DFA72E0082DA82 /* PhotosViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FA976BB27DD2A570082DA82 /* PhotosTableViewCell.swift in Sources */,
+				1FA976BF27DFA72E0082DA82 /* PhotosViewController.swift in Sources */,
 				1FF73D4A27B3E24D00226299 /* PostViewController.swift in Sources */,
 				1FF73D4427B3D1AA00226299 /* TabBarController.swift in Sources */,
 				1FF73D4627B3DAC300226299 /* FeedViewController.swift in Sources */,

@@ -147,14 +147,14 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         return  300
     }
 
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if indexPath == 0 {
-//            self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
-//        }
-//    }
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            self.navigationController?.pushViewController(PhotosViewController(), animated: true)
+        } else { return }
+    }
+    }
 
-}
+
 
 
 
