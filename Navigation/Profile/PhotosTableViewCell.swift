@@ -9,10 +9,18 @@ import UIKit
 
 class PhotosTableViewCell: UITableViewCell {
 
-    struct ViewModel {
-        let image: String
-        let likes, views: Int
+    private lazy var backView: UIView = {
+        let view = UIView()
+        view.clipsToBounds = true
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+
+        return view
+    }()
+
+    lazy var collectionLabel: UILabel = {
+        
+
 
     }
-
 }
