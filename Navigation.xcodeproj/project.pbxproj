@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F02078A27E640900054F871 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F02078927E640900054F871 /* AnimationViewController.swift */; };
 		1FA976BB27DD2A570082DA82 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA976BA27DD2A570082DA82 /* PhotosTableViewCell.swift */; };
 		1FA976BF27DFA72E0082DA82 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA976BE27DFA72E0082DA82 /* PhotosViewController.swift */; };
 		1FA976C427DFD3120082DA82 /* PhotosStuct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA976C327DFD3120082DA82 /* PhotosStuct.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F02078927E640900054F871 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		1FA976BA27DD2A570082DA82 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		1FA976BE27DFA72E0082DA82 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		1FA976C327DFD3120082DA82 /* PhotosStuct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosStuct.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				1FF73D4527B3DAC300226299 /* FeedViewController.swift */,
 				1FE7945227DA2D090099321E /* Models */,
 				1FF73D4B27B3F6B900226299 /* InfoViewController.swift */,
+				1F02078927E640900054F871 /* AnimationViewController.swift */,
 				1FF73D4927B3E24D00226299 /* PostViewController.swift */,
 				1FE7945127DA2AA20099321E /* resources */,
 			);
@@ -209,6 +212,7 @@
 				1FF73D4627B3DAC300226299 /* FeedViewController.swift in Sources */,
 				1FF73D5027B4454F00226299 /* Post.swift in Sources */,
 				1FF43BA227C12240000E6DEE /* ProfileTableHederView.swift in Sources */,
+				1F02078A27E640900054F871 /* AnimationViewController.swift in Sources */,
 				1FF73D4C27B3F6B900226299 /* InfoViewController.swift in Sources */,
 				1FF73D4827B3DB1100226299 /* ProfileViewController.swift in Sources */,
 				1FF73D3027B3D02400226299 /* AppDelegate.swift in Sources */,
