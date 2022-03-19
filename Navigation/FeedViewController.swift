@@ -20,7 +20,7 @@ class FeedViewController: UIViewController {
     
     private lazy var postButtonOne: UIButton = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(self.goToPost), for: .touchUpInside)
+        button.addTarget(self, action: #selector(self.goToAnimationController), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.clipsToBounds = true
         button.backgroundColor = .systemBlue
@@ -85,9 +85,9 @@ class FeedViewController: UIViewController {
     }
 
     @objc func goToAnimationController(sender:UIButton!)  {
-        let postViewController  = PostViewController()
+        let animationViewController  = AnimationViewController()
 
-        self.navigationController?.pushViewController(postViewController, animated: true)
+        self.navigationController?.pushViewController(animationViewController, animated: true)
 
         self.navigationItem.backButtonTitle = "Назад"
     }
