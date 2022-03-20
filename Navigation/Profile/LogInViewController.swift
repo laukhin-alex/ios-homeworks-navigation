@@ -17,11 +17,11 @@ final class LogInViewController: UIViewController {
     }()
 
     private lazy var contentView: UIView = {
-            let contentView = UIView()
-            contentView.backgroundColor = .white
-            contentView.translatesAutoresizingMaskIntoConstraints = false
-            return contentView
-        }()
+        let contentView = UIView()
+        contentView.backgroundColor = .white
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        return contentView
+    }()
 
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "logo"))
@@ -109,6 +109,7 @@ final class LogInViewController: UIViewController {
         let nc = NotificationCenter.default
         nc.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         nc.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
 
 
@@ -168,7 +169,7 @@ final class LogInViewController: UIViewController {
     @objc func buttonClicked() {
         let profileViewController = ProfileViewController()
         if self.loginTextField.text != "" && self.passwordTextField.text != "" {
-        navigationController?.pushViewController(profileViewController, animated: true)
+            navigationController?.pushViewController(profileViewController, animated: true)
         } else {
             let alertController = UIAlertController(title: "Access denied!",
                                                     message: "You didn't write password and/or login!",
@@ -198,6 +199,12 @@ final class LogInViewController: UIViewController {
         if let kbdSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             scrollView.contentInset.bottom = kbdSize.height
             scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbdSize.height, right: 0)
+            if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                let keyboardHeight = keyboardRectangle.height
+                let contentOffset: CGPoint = notification.name == UIResponder.keyboardWillHideNotification ? .zero: CGPoint(x: 0, y: keyboardHeight)
+                self.scrollView.contentOffset = contentOffset
+            }
         }
     }
 
