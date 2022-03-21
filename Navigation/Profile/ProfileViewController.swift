@@ -7,7 +7,15 @@
 
 import UIKit
 
-final class ProfileViewController: UIViewController {
+
+protocol ProfileDelegat {
+    func updateHeaderHeight(_ isExpanded: Bool)
+}
+
+final class ProfileViewController: UIViewController, ProfileDelegat {
+
+
+
 
 
 
@@ -35,8 +43,8 @@ final class ProfileViewController: UIViewController {
         return tableView
     }()
 
-    private var heightConstraint: NSLayoutConstraint?
-
+//    private var heightConstraint: NSLayoutConstraint?
+    private var isExpanded = false
     private var dataSource: [Posts] = []
 
     override func viewDidLoad() {
@@ -46,6 +54,12 @@ final class ProfileViewController: UIViewController {
         self.addPosts()
 
         }
+
+    func updateHeaderHeight(_ isExpanded: Bool) {
+        self.isExpanded = isExpanded
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -141,14 +155,14 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView =  profileHeaderView
-        headerView.backgroundColor = .lightGray
-        headerView.heightAnchor.constraint(equalToConstant: 300).isActive = true
 
+        self.profileHeaderView.delegate = self
+        headerView.backgroundColor = .lightGray
         return headerView
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return  300
+        return  self.isExpanded ? 300 : 245
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

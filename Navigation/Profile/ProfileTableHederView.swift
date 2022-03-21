@@ -7,9 +7,12 @@
 
 import UIKit
 
-
+protocol ProfileHeaderViewProtocol: AnyObject {
+    func didTapShowStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void)
+}
 final class ProfileHeaderView: UIView {
 
+   var delegate: ProfileDelegat?
 
 
     private lazy var avatarImageView: UIImageView = {
@@ -180,8 +183,15 @@ final class ProfileHeaderView: UIView {
         self.statusTextField.resignFirstResponder()
         return true
     }
-   private func didTapShowStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void) {
-        self.heightConstraint?.constant = textFieldIsVisible ? 300 : 245
+
+}
+
+extension ProfileHeaderView: UITextFieldDelegate {}
+
+extension ProfileHeaderView: ProfileHeaderViewProtocol {
+
+    func didTapShowStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void) {
+        self.delegate?.updateHeaderHeight(textFieldIsVisible)
         UIView.animate(withDuration: 0.3, delay: 0.1) {
             self.layoutIfNeeded()
         } completion: { _ in
@@ -189,7 +199,3 @@ final class ProfileHeaderView: UIView {
         }
     }
 }
-
-extension ProfileHeaderView: UITextFieldDelegate {}
-
-
