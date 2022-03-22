@@ -39,6 +39,12 @@ final class ProfileViewController: UIViewController {
     }
 
     private func setupNavigationBar() {
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.title = "Профиль"
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.title = "Профиль"
     }
