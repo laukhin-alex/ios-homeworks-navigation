@@ -7,9 +7,6 @@
 
 import UIKit
 
-protocol ProfileHeaderViewProtocol: AnyObject {
-    func didTapShowStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void)
-}
 
 final class ProfileHeaderView: UIView {
 
@@ -92,7 +89,7 @@ final class ProfileHeaderView: UIView {
 
     private var topSetStatusButtonOn: NSLayoutConstraint?
     private var topSetStatusButtonOff: NSLayoutConstraint?
-    weak var delegate: ProfileHeaderViewProtocol?
+
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -118,7 +115,7 @@ final class ProfileHeaderView: UIView {
         self.addSubview(self.statusLabel)
         self.addSubview(self.statusButton)
         self.addSubview(self.statusTextField)
-        self.delegate = self
+
         let topAvatarImageConstraint = self.avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16)
         let leadingAvatarImageConstraint = self.avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
         let widthAvatarImageConstraint = self.avatarImageView.widthAnchor.constraint(equalToConstant: 150)
@@ -175,7 +172,7 @@ final class ProfileHeaderView: UIView {
 
             NSLayoutConstraint.activate([self.topSetStatusButtonOff].compactMap({ $0 }))
         }
-        self.delegate?.didTapShowStatusButton(textFieldIsVisible: self.statusTextField.isHidden) { [weak self] in
+        self.didTapShowStatusButton(textFieldIsVisible: self.statusTextField.isHidden) { [weak self] in
             self?.statusTextField.isHidden.toggle()
         }
     }
@@ -183,13 +180,7 @@ final class ProfileHeaderView: UIView {
         self.statusTextField.resignFirstResponder()
         return true
     }
-}
-
-extension ProfileHeaderView: UITextFieldDelegate {}
-
-extension ProfileHeaderView: ProfileHeaderViewProtocol {
-
-    func didTapShowStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void) {
+   private func didTapShowStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void) {
         self.heightConstraint?.constant = textFieldIsVisible ? 300 : 245
         UIView.animate(withDuration: 0.3, delay: 0.1) {
             self.layoutIfNeeded()
@@ -198,3 +189,7 @@ extension ProfileHeaderView: ProfileHeaderViewProtocol {
         }
     }
 }
+
+extension ProfileHeaderView: UITextFieldDelegate {}
+
+

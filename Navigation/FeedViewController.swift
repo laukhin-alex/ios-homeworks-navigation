@@ -20,12 +20,12 @@ class FeedViewController: UIViewController {
     
     private lazy var postButtonOne: UIButton = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(self.goToPost), for: .touchUpInside)
+        button.addTarget(self, action: #selector(self.goToAnimationController), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.clipsToBounds = true
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 12
-        button.setTitle("Показать пост, кнопка один", for: .normal)
+        button.setTitle("Изучаем жесты", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -81,6 +81,14 @@ class FeedViewController: UIViewController {
         
         self.navigationController?.pushViewController(postViewController, animated: true)
         
+        self.navigationItem.backButtonTitle = "Назад"
+    }
+
+    @objc func goToAnimationController(sender:UIButton!)  {
+        let animationViewController  = AnimationViewController()
+
+        self.navigationController?.pushViewController(animationViewController, animated: true)
+
         self.navigationItem.backButtonTitle = "Назад"
     }
 }
