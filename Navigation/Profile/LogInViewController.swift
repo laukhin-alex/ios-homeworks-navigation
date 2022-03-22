@@ -10,7 +10,8 @@ import UIKit
 final class LogInViewController: UIViewController {
 
 
-
+    private let password = "pass"
+    private let login = "login"
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .white
@@ -168,11 +169,32 @@ final class LogInViewController: UIViewController {
 
     @objc func buttonClicked() {
         let profileViewController = ProfileViewController()
-        if self.loginTextField.text != "" && self.passwordTextField.text != "" {
+        if self.loginTextField.text == login && self.passwordTextField.text == password {
             navigationController?.pushViewController(profileViewController, animated: true)
-        } else {
+        } else if self.loginTextField.text != login && self.passwordTextField.text != password {
             let alertController = UIAlertController(title: "Access denied!",
-                                                    message: "You didn't write password and/or login!",
+                                                    message: "You didn't write correct password and login!",
+                                                    preferredStyle: .alert)
+
+            let actionOK = UIAlertAction(title: "OK",
+                                         style: .default,
+                                         handler: {(action:UIAlertAction!) in
+                print("OK Was pressed!")
+            })
+
+            let actionCancel = UIAlertAction(title: "Cancel",
+                                             style: .cancel,
+                                             handler: {(action:UIAlertAction!) in
+                print("Cancel was pressed!")
+            })
+
+            alertController.addAction(actionOK)
+            alertController.addAction(actionCancel)
+
+            self.present(alertController, animated: true, completion: nil)
+        } else if self.loginTextField.text == login && self.passwordTextField.text != password {
+            let alertController = UIAlertController(title: "Access denied!",
+                                                    message: "You didn't write correct password!",
                                                     preferredStyle: .alert)
 
             let actionOK = UIAlertAction(title: "OK",
@@ -192,8 +214,30 @@ final class LogInViewController: UIViewController {
 
             self.present(alertController, animated: true, completion: nil)
 
-        }
-    }
+    } else if self.loginTextField.text != login && self.passwordTextField.text == password {
+        let alertController = UIAlertController(title: "Access denied!",
+                                                message: "You didn't write correct login!",
+                                                preferredStyle: .alert)
+
+        let actionOK = UIAlertAction(title: "OK",
+                                     style: .default,
+                                     handler: {(action:UIAlertAction!) in
+            print("OK Was pressed!")
+        })
+
+        let actionCancel = UIAlertAction(title: "Cancel",
+                                         style: .cancel,
+                                         handler: {(action:UIAlertAction!) in
+            print("Cancel was pressed!")
+        })
+
+        alertController.addAction(actionOK)
+        alertController.addAction(actionCancel)
+
+        self.present(alertController, animated: true, completion: nil)
+
+}
+}
 
     @objc private func kbdShow(notification: NSNotification) {
         if let kbdSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
