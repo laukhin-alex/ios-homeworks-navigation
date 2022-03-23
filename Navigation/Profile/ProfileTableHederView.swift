@@ -99,6 +99,9 @@ final class ProfileHeaderView: UIView {
         self.drawSelf()
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapSetStatusButton))
         self.addGestureRecognizer(tap)
+        statusButton.isUserInteractionEnabled = true
+        statusButton.isEnabled = true
+        statusButton.alpha = 1
     }
 
     required init?(coder: NSCoder) {
@@ -160,10 +163,16 @@ final class ProfileHeaderView: UIView {
                 self.topSetStatusButtonOn
             ].compactMap({ $0 }))
             self.statusButton.setTitle("Set status", for: .normal)
+            statusButton.isUserInteractionEnabled = true
+            statusButton.isEnabled = false
+            statusButton.alpha = 0.5
         } else {
             self.statusTextField.isHidden = false
             self.statusTextField.alpha = 0
             self.statusButton.setTitle("Show status", for: .normal)
+            statusButton.isUserInteractionEnabled = false
+            statusButton.isEnabled = true
+            statusButton.alpha = 1.0
             self.statusTextField.endEditing(true)
             NSLayoutConstraint.deactivate([self.topSetStatusButtonOn].compactMap({ $0 }))
             if self.statusTextField.text != "" {
@@ -183,7 +192,25 @@ final class ProfileHeaderView: UIView {
         self.statusTextField.resignFirstResponder()
         return true
     }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
+            let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+
+        if statusButton.titleLabel?.text == "Show status" {
+            statusButton.isUserInteractionEnabled = true
+            statusButton.isEnabled = true
+            statusButton.alpha = 1.0
+        } else if statusButton.titleLabel?.text == "Set status" && !text.isEmpty {
+                statusButton.isUserInteractionEnabled = true
+            statusButton.isEnabled = true
+            statusButton.alpha = 1.0
+            } else {
+                statusButton.isUserInteractionEnabled = false
+                statusButton.isEnabled = false
+                statusButton.alpha = 0.5
+            }
+            return true
+        }
 }
 
 extension ProfileHeaderView: UITextFieldDelegate {}

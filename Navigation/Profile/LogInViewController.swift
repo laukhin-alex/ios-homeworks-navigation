@@ -9,9 +9,10 @@ import UIKit
 
 final class LogInViewController: UIViewController {
 
+//    login@mail.ru
+    private var password = "1"
+    private var login = "1"
 
-    private let password = "pass"
-    private let login = "login"
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .white
@@ -31,6 +32,19 @@ final class LogInViewController: UIViewController {
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
+    }()
+
+   private lazy var labelAlert: UILabel = {
+        let label = UILabel()
+       label.alpha = 0
+        label.font = .systemFont(ofSize: 15, weight: .bold)
+       label.textAlignment = .center
+       label.layer.borderWidth = 3
+       label.layer.borderColor = UIColor.red.cgColor
+       label.backgroundColor = .yellow
+       label.layer.cornerRadius = 10
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 
     private lazy var loginPasswordStackView: UIStackView = {
@@ -95,6 +109,7 @@ final class LogInViewController: UIViewController {
         view.backgroundColor = .white
         self.configureSubviews()
         self.setupConstraints()
+        self.setupLabelAlert()
         self.navigationController?.navigationBar.isHidden = true
     }
 
@@ -123,6 +138,16 @@ final class LogInViewController: UIViewController {
         self.contentView.addSubview(self.loginPasswordStackView)
         self.loginPasswordStackView.addArrangedSubview(self.loginTextField)
         self.loginPasswordStackView.addArrangedSubview(self.passwordTextField)
+    }
+    private func setupLabelAlert() {
+        self.contentView.addSubview(self.labelAlert)
+
+        NSLayoutConstraint.activate([
+            labelAlert.topAnchor.constraint(equalTo: self.logInButton.bottomAnchor, constant: 20),
+            labelAlert.leadingAnchor.constraint(equalTo: self.loginPasswordStackView.leadingAnchor),
+            labelAlert.trailingAnchor.constraint(equalTo: self.loginPasswordStackView.trailingAnchor),
+            labelAlert.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
 
     private func setupConstraints() {
@@ -169,6 +194,31 @@ final class LogInViewController: UIViewController {
 
     @objc func buttonClicked() {
         let profileViewController = ProfileViewController()
+
+        if self.passwordTextField.text?.count ?? 0 < password.count {
+            labelAlert.alpha = 1
+            labelAlert.text = "Количество символов пароля меньше верного"
+
+        } else if self.passwordTextField.text?.count ?? 0 > password.count {
+            labelAlert.alpha = 1
+            labelAlert.text = "Количество символов пароля больше верного"
+
+        } else {
+            labelAlert.alpha = 0
+        }
+
+        self.passwordTextField.backgroundColor = .systemGray6
+        self.loginTextField.backgroundColor = .systemGray6
+        if self.loginTextField.text == "" && self.passwordTextField.text != "" {
+            self.loginTextField.backgroundColor = .red
+        } else if self.loginTextField.text != "" && self.passwordTextField.text == "" {
+            self.passwordTextField.backgroundColor = .red
+
+        } else if self.loginTextField.text == "" && self.passwordTextField.text == "" {
+            self.passwordTextField.backgroundColor = .red
+            self.loginTextField.backgroundColor = .red
+        }
+
         if self.loginTextField.text == login && self.passwordTextField.text == password {
             navigationController?.pushViewController(profileViewController, animated: true)
         } else if self.loginTextField.text != login && self.passwordTextField.text != password {
@@ -236,7 +286,7 @@ final class LogInViewController: UIViewController {
 
         self.present(alertController, animated: true, completion: nil)
 
-}
+    }
 }
 
     @objc private func kbdShow(notification: NSNotification) {
