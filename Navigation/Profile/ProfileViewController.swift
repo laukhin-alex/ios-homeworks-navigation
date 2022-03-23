@@ -25,6 +25,7 @@ final class ProfileViewController: UIViewController {
         tableView.estimatedRowHeight = 44
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "ArticleCell")
         tableView.backgroundColor = .white
@@ -46,18 +47,22 @@ final class ProfileViewController: UIViewController {
 
         }
 
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
 
 
     private func setupNavigationBar() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "Feed"
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.title = "Profile"
+        self.navigationController?.navigationBar.isHidden = true
 
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.backgroundColor = UIColor.black
+        navBarAppearance.backgroundColor = UIColor.lightGray
         navBarAppearance.shadowImage = nil
         navBarAppearance.shadowColor = nil
         self.navigationController?.navigationBar.standardAppearance = navBarAppearance
@@ -112,14 +117,18 @@ final class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataSource.count
+        return self.dataSource.count + 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PhotosTableViewCell", for: indexPath)
+            return cell
+        } else {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as? PostTableViewCell else { let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
         return cell
     }
-        let article = self.dataSource[indexPath.row]
+        let article = self.dataSource[indexPath.row - 1]
         let viewModel = PostTableViewCell.ViewModel(author: article.author,
                                                              description: article.description,
                                                              image: article.image,
@@ -128,9 +137,11 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setup(with: viewModel)
         return cell
     }
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView =  profileHeaderView
-        headerView.backgroundColor = .systemGray6
+        headerView.backgroundColor = .lightGray
         headerView.heightAnchor.constraint(equalToConstant: 300).isActive = true
 
         return headerView
@@ -140,7 +151,16 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         return  300
     }
 
-}
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            self.navigationController?.pushViewController(PhotosViewController(), animated: true)
+            self.navigationItem.backButtonTitle = "Назад"
+            title = "Photo"
+        } else { return }
+    }
+    }
+
+
 
 
 
