@@ -9,6 +9,9 @@ import UIKit
 
 class PhotosViewController: UIViewController {
 
+    var selectedCell: PhotosCollectionViewCell?
+    var selectedCellImageViewSnapshot: UIView?
+
     private enum Constants {
         static let itemCount: CGFloat = 3
     }
@@ -31,36 +34,36 @@ class PhotosViewController: UIViewController {
         return collectionView
     }()
 
-    private var collectionDataSource : [PhotosViewModel] = [
-        PhotosViewModel(image: "1"),
-        PhotosViewModel(image: "2"),
-        PhotosViewModel(image: "3"),
-        PhotosViewModel(image: "4"),
-        PhotosViewModel(image: "5"),
-        PhotosViewModel(image: "6"),
-        PhotosViewModel(image: "7"),
-        PhotosViewModel(image: "8"),
-        PhotosViewModel(image: "9"),
-        PhotosViewModel(image: "10"),
-        PhotosViewModel(image: "11"),
-        PhotosViewModel(image: "12"),
-        PhotosViewModel(image: "13"),
-        PhotosViewModel(image: "14"),
-        PhotosViewModel(image: "15"),
-        PhotosViewModel(image: "16"),
-        PhotosViewModel(image: "17"),
-        PhotosViewModel(image: "18"),
-        PhotosViewModel(image: "19"),
-        PhotosViewModel(image: "20"),
+    private let tapGestureRecognizer = UITapGestureRecognizer()
+
+    private var collectionDataSource : [CollectionViewModel] = [
+        CollectionViewModel(image: "1.jpeg"),
+        CollectionViewModel(image: "2.jpeg"),
+        CollectionViewModel(image: "3.jpeg"),
+        CollectionViewModel(image: "4.jpeg"),
+        CollectionViewModel(image: "5.jpeg"),
+        CollectionViewModel(image: "6.jpeg"),
+        CollectionViewModel(image: "7.jpeg"),
+        CollectionViewModel(image: "8.jpeg"),
+        CollectionViewModel(image: "9.jpeg"),
+        CollectionViewModel(image: "10.jpeg"),
+        CollectionViewModel(image: "11.jpeg"),
+        CollectionViewModel(image: "12.jpeg"),
+        CollectionViewModel(image: "13.jpeg"),
+        CollectionViewModel(image: "14.jpeg"),
+        CollectionViewModel(image: "15.jpeg"),
+        CollectionViewModel(image: "16.jpeg"),
+        CollectionViewModel(image: "17.jpeg"),
+        CollectionViewModel(image: "18.jpeg"),
+        CollectionViewModel(image: "19.jpeg"),
+        CollectionViewModel(image: "20.jpeg")
     ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
-        self.title = "Photo Gallery"
-        self.navigationItem.backButtonTitle = "Back"
-        self.navigationController?.navigationBar.isHidden = false
-        
+        self.title = "Фотографии"
+        navigationItem.backButtonTitle = ""
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -69,12 +72,13 @@ class PhotosViewController: UIViewController {
     }
 
     private func setupView() {
-        view.addSubview(self.collectionView)
+        view.addSubview(collectionView)
+
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
 
@@ -98,8 +102,8 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
         }
         cell.backgroundColor = .systemGray6
         let photos = collectionDataSource[indexPath.row]
-        cell.photoImagesToGallery.image = UIImage(named: photos.image)
-        cell.photoImagesToGallery.contentMode = .scaleAspectFill
+        cell.photoGalleryImages.image = UIImage(named: photos.image)
+        cell.photoGalleryImages.contentMode = .scaleAspectFill
         return cell
     }
 
@@ -110,5 +114,12 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt: IndexPath) -> CGSize {
         let spacing = ( collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.minimumInteritemSpacing
         return self.itemSize(for: collectionView.frame.width, with: spacing ?? 0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let viewController = DetailedPhotoViewController()
+        viewController.selectedImage = collectionDataSource[indexPath.row].image
+        navigationController?.present(viewController, animated: true)
+
     }
 }

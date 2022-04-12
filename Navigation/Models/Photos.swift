@@ -1,13 +1,13 @@
 //
-//  PhotosStuct.swift
+//  Photos.swift
 //  Navigation
 //
-//  Created by Александр on 14.03.2022.
+//  Created by Александр on 12.04.2022.
 //
 
-import UIKit
+import Foundation
 
-struct PhotosViewModel {
+struct CollectionViewModel {
     var image: String = ""
 
     init(image: String){

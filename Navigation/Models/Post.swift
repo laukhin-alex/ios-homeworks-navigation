@@ -5,10 +5,11 @@
 //  Created by Александр on 09.02.2022.
 //
 
-import UIKit
+import Foundation
 
-struct Posts {
-    let author, description, image: String
+struct Posts: Equatable {
+    let author, description, image, id: String
     var likes, views: Int
 }
 
+var dataSource: [Posts] = []

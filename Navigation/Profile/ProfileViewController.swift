@@ -7,175 +7,194 @@
 
 import UIKit
 
+final class ProfileViewController: UIViewController, TapLikedDelegate {
 
-protocol ProfileDelegat {
-    func updateHeaderHeight(_ isExpanded: Bool)
-}
-
-final class ProfileViewController: UIViewController, ProfileDelegat {
-
-
-
-
-
-
-    private lazy var profileHeaderView: ProfileHeaderView = {
-        let view = ProfileHeaderView(frame: .zero)
-        view.backgroundColor = .lightGray
-
-        return view
+    private let profileHeaderView = ProfileHeaderView()
+    private let detailedAvatarView: DetailedAvatarView = {
+        let avatarView = DetailedAvatarView()
+        avatarView.translatesAutoresizingMaskIntoConstraints = false
+        return avatarView
     }()
 
+    var liked: Bool = false
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44
+   //     tableView.rowHeight = UITableView.automaticDimension
+   //     tableView.estimatedRowHeight = 44
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
-        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "ArticleCell")
-        tableView.backgroundColor = .white
-        tableView.layer.borderColor = UIColor.gray.cgColor
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCell")
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
+        tableView.backgroundColor = .systemGray6
+        tableView.layer.borderColor = UIColor.lightGray.cgColor
         tableView.layer.borderWidth = 0.5
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
 
-//    private var heightConstraint: NSLayoutConstraint?
-    private var isExpanded = false
-    private var dataSource: [Posts] = []
+    private let tapGestureRecognizer = UITapGestureRecognizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
-        self.setupViewTableView()
-        self.addPosts()
-
-        }
-
-    func updateHeaderHeight(_ isExpanded: Bool) {
-        self.isExpanded = isExpanded
-        self.tableView.beginUpdates()
-        self.tableView.endUpdates()
+        self.setupView()
+        self.addDataSource()
+        self.setupGesture()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        tableView.reloadData()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+   //     tableView.reloadData()
+    }
+
+    func tapLikedLabel() {
+        liked.toggle()
+        self.tableView.reloadData()
+    }
 
     private func setupNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.navigationItem.title = "Profile"
-        self.navigationController?.navigationBar.isHidden = true
-
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.configureWithOpaqueBackground()
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.backgroundColor = UIColor.lightGray
-        navBarAppearance.shadowImage = nil
-        navBarAppearance.shadowColor = nil
-        self.navigationController?.navigationBar.standardAppearance = navBarAppearance
-        self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        self.navigationItem.title = "Профиль"
+        navigationItem.backButtonTitle = ""
     }
 
-
-
-    private func setupViewTableView() {
-        self.view.backgroundColor = .systemGray6
-        self.view.addSubview(self.tableView)
-
-        let topConstraint = self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
-        let leadingConstraint = self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
-        let trailingConstraint = self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        let bottomConstraint = self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
-
-
+    private func setupView() {
+        view.backgroundColor = .systemGray6
+        view.addSubview(tableView)
+        view.addSubview(detailedAvatarView)
+  //      navigationController?.navigationBar.alpha = 0.9
+  //      navigationController?.tabBarController?.tabBar.alpha = 0.9
         NSLayoutConstraint.activate([
-            topConstraint, leadingConstraint, trailingConstraint, bottomConstraint
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+
+            detailedAvatarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            detailedAvatarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            detailedAvatarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            detailedAvatarView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            detailedAvatarView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
 
-    private func addPosts() {
-        self.dataSource.append(.init(author: "CJ",
-                                     description: "Big smoke chill chill",
-                                     image: "gta",
-                                     likes: 1,
-                                     views: 1))
-        self.dataSource.append(.init(author: "unknown",
-                                     description: "Very nice view...",
-                                     image: "nature",
-                                     likes: 100,
-                                     views: 500))
-        self.dataSource.append(.init(author: "Spotter",
-                                     description: "Landing airbus is amazing!",
-                                     image: "plane",
-                                     likes: 45,
-                                     views: 65))
-        self.dataSource.append(.init(author: "Hakuna matata",
-                                     description: "The best restaurant at the island Zanzibar",
-                                     image: "zanzibar",
-                                     likes: 32,
-                                     views: 43))
+    private func addDataSource() {
+        dataSource.append(.init(author: "Аркадий Цареградцев", description: "Тот случай, когда фан-арт полностью вышел из под контроля! ", image: "post1", id: "001", likes: 5, views: 5))
+        dataSource.append(.init(author: "Займись собой", description: "Мы выросли на их примере, а это не может не радовать", image: "post2", id: "002", likes: 25, views: 50))
+        dataSource.append(.init(author: "Kay May", description: "S13 в родном окрасе", image: "post3", id: "003", likes: 10, views: 15))
+        dataSource.append(.init(author: "Sport Factor", description: "Тренировки тренировками, а сон по расписанию", image: "post4", id: "004", likes: 52, views: 60))
+        dataSource.append(.init(author: "Toyo Tires Russia", description: "Ландин Уильямс получил водительские права больше десяти лет назад, во времена, когда начала выходить серия фильмов «Форсаж». Помимо этого культового кинофильма Ландин «подсел» на не менее культовый японский мультсериал о дрифте Initial D", image: "post5", id: "005", likes: 30, views: 40))
     }
 
+    private func setupGesture() {
+        tapGestureRecognizer.addTarget(self, action: #selector(handleTapGesture(_ :)))
+        profileHeaderView.avatarImageView.addGestureRecognizer(tapGestureRecognizer)
+    }
+
+    @objc func handleTapGesture(_ gestureRecognizer: UITapGestureRecognizer){
+        guard self.tapGestureRecognizer === gestureRecognizer else { return }
+   //     let viewController = DetailedAvatarViewController()
+   //     present(viewController, animated: true)
+        UIView.animate(withDuration: 0.5) {
+            self.detailedAvatarView.alpha = 1
+        }
+ //       presentDetailedAvatarViewController()
+    }
+
+    func presentDetailedAvatarViewController() {
+        let secondViewController = DetailedAvatarViewController()
+        secondViewController.transitioningDelegate = self
+        secondViewController.modalPresentationStyle = .fullScreen
+        present(secondViewController, animated: true)
+    }
 }
-
-
-
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataSource.count + 1
+        return dataSource.count + 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotosTableViewCell", for: indexPath)
+            cell.selectionStyle = .none
             return cell
         } else {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as? PostTableViewCell else { let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
-        return cell
-    }
-        let article = self.dataSource[indexPath.row - 1]
-        let viewModel = PostTableViewCell.ViewModel(author: article.author,
-                                                             description: article.description,
-                                                             image: article.image,
-                                                             likes: article.likes,
-                                                             views: article.views)
-        cell.setup(with: viewModel)
-        return cell
-    }
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView =  profileHeaderView
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as? PostTableViewCell else {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+                    return cell
+                }
+            cell.likedDelegate = self
 
-       
-        headerView.backgroundColor = .lightGray
-        return headerView
+            if liked {
+                dataSource[indexPath.row - 1].likes += 1
+                liked.toggle()
+            }
+
+            let article = dataSource[indexPath.row - 1]
+            let viewModel = PostTableViewCell.ViewModel(author: article.author,
+                                                        image: article.image,
+                                                        description: article.description,
+                                                        likes: article.likes,
+                                                        views: article.views)
+            cell.setup(with: viewModel)
+            return cell
+        }
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return profileHeaderView
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return  self.isExpanded ? 300 : 245
+        return  250
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView( _ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             self.navigationController?.pushViewController(PhotosViewController(), animated: true)
-            self.navigationItem.backButtonTitle = "Назад"
-            title = "Photo"
-        } else { return }
+        } else {
+            let viewController = DetailedPostViewController()
+            viewController.selectedDataImage = dataSource[indexPath.row - 1].image
+            viewController.selectedDataLikes = dataSource[indexPath.row - 1].likes
+            viewController.selectedDataViews = dataSource[indexPath.row - 1].views + 1
+            viewController.selectedDataAuthor = dataSource[indexPath.row - 1].author
+            viewController.selectedDataDescription = dataSource[indexPath.row - 1].description
+            viewController.selectedId = dataSource[indexPath.row - 1].id
+            dataSource[indexPath.row - 1].views += 1
+            self.tableView.reloadRows(at: [indexPath], with: .none)
+            navigationController?.pushViewController(viewController, animated: true)
+        }
     }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if indexPath.row != 0 {
+            let deleteAction = UIContextualAction(style: .destructive, title: "Удалить") {
+                (contextualAction, view, boolValue) in
+                dataSource.remove(at: indexPath.row - 1)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+            let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
+            return swipeActions
+        }
+        else { return nil }
+    }
+}
+
+extension ProfileViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AvatarTransitionAnimator(presentationImageView: profileHeaderView.avatarImageView, isPresenting: true)
     }
 
-
-
-
-
-
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AvatarTransitionAnimator(presentationImageView: profileHeaderView.avatarImageView, isPresenting: false)
+    }
+}

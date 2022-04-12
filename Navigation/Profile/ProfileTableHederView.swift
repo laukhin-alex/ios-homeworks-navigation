@@ -10,7 +10,7 @@ import UIKit
 final class ProfileHeaderView: UIView {
 
 
-    private lazy var avatarImageView: UIImageView = {
+     lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "avatar"))
         imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
