@@ -156,7 +156,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView =  profileHeaderView
 
-        self.profileHeaderView.delegate = self
+       
         headerView.backgroundColor = .lightGray
         return headerView
     }

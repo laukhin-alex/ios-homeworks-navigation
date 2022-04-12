@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F02078A27E640900054F871 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F02078927E640900054F871 /* AnimationViewController.swift */; };
+		1F1FEF792805AAF90028EB65 /* AvatarTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1FEF782805AAF90028EB65 /* AvatarTransitionAnimator.swift */; };
 		1FA976BB27DD2A570082DA82 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA976BA27DD2A570082DA82 /* PhotosTableViewCell.swift */; };
 		1FA976BF27DFA72E0082DA82 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA976BE27DFA72E0082DA82 /* PhotosViewController.swift */; };
 		1FA976C427DFD3120082DA82 /* PhotosStuct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA976C327DFD3120082DA82 /* PhotosStuct.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		1F02078927E640900054F871 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
+		1F1FEF782805AAF90028EB65 /* AvatarTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarTransitionAnimator.swift; sourceTree = "<group>"; };
 		1FA976BA27DD2A570082DA82 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		1FA976BE27DFA72E0082DA82 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		1FA976C327DFD3120082DA82 /* PhotosStuct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosStuct.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				1FA976BA27DD2A570082DA82 /* PhotosTableViewCell.swift */,
 				1FA976BE27DFA72E0082DA82 /* PhotosViewController.swift */,
 				1FA976C527DFD36F0082DA82 /* PhotosCollectionViewCell.swift */,
+				1F1FEF782805AAF90028EB65 /* AvatarTransitionAnimator.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				1FD8913C2805A4ED00382CFF /* DetailedAvatarView.swift in Sources */,
 				1FF73D3027B3D02400226299 /* AppDelegate.swift in Sources */,
 				1FC4B5E127CAA305008AFE01 /* LogInViewController.swift in Sources */,
+				1F1FEF792805AAF90028EB65 /* AvatarTransitionAnimator.swift in Sources */,
 				1FA976C627DFD36F0082DA82 /* PhotosCollectionViewCell.swift in Sources */,
 				1FC4B60527CEAD7E008AFE01 /* PostTableViewCell.swift in Sources */,
 				1FA976C427DFD3120082DA82 /* PhotosStuct.swift in Sources */,
