@@ -117,11 +117,14 @@ class DetailedPostViewController: UIViewController {
         setupNavigationBar()
         setupView()
         setupGesture()
+        self.navigationItem.backButtonTitle = "Back"
     }
 
     private func setupNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.navigationItem.title = "Запись"
+        self.navigationItem.title = "Post"
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.backButtonTitle = "Назад"
     }
 
     private func setupView() {

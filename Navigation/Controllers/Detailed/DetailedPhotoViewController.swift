@@ -29,15 +29,6 @@ class DetailedPhotoViewController: UIViewController {
         return imageView
     }()
 
-  /*   lazy var closeButton: UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 20
-        button.clipsToBounds = true
-        button.setBackgroundImage(UIImage(named: "closeButton"), for: .normal)
-        button.addTarget(self, action: #selector(self.didTapCloseButton), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()     */
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +37,7 @@ class DetailedPhotoViewController: UIViewController {
 
     private func setupView() {
         view.addSubview(alphaView)
-   //     view.addSubview(closeButton)
+        self.navigationItem.backButtonTitle = "Back"
         view.addSubview(detailedPhotoImage)
         view.backgroundColor = .white
 
@@ -58,10 +49,6 @@ class DetailedPhotoViewController: UIViewController {
             alphaView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             alphaView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             alphaView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-    /*        closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            closeButton.heightAnchor.constraint(equalToConstant: 40),
-            closeButton.widthAnchor.constraint(equalToConstant: 40)     */
         ])
     }
 

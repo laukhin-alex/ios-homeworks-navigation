@@ -18,7 +18,7 @@ class DetailedAvatarViewController: UIViewController {
     }()
 
     private lazy var detailedAvatarImage: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "photo"))
+        let imageView = UIImageView(image: UIImage(named: "avatar"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

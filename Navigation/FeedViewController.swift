@@ -81,7 +81,7 @@ class FeedViewController: UIViewController {
         
         self.navigationController?.pushViewController(postViewController, animated: true)
         
-        self.navigationItem.backButtonTitle = "Назад"
+        self.navigationItem.backButtonTitle = "Back"
     }
 
     @objc func goToAnimationController(sender:UIButton!)  {
@@ -89,7 +89,7 @@ class FeedViewController: UIViewController {
 
         self.navigationController?.pushViewController(animationViewController, animated: true)
 
-        self.navigationItem.backButtonTitle = "Назад"
+        self.navigationItem.backButtonTitle = "Back"
     }
 }
 

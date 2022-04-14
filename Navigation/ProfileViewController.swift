@@ -20,8 +20,6 @@ final class ProfileViewController: UIViewController, TapLikedDelegate {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-   //     tableView.rowHeight = UITableView.automaticDimension
-   //     tableView.estimatedRowHeight = 44
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
@@ -41,6 +39,8 @@ final class ProfileViewController: UIViewController, TapLikedDelegate {
         self.setupNavigationBar()
         self.setupView()
         self.addDataSource()
+        self.navigationController?.navigationBar.isHidden = false
+        navigationItem.backButtonTitle = "Back"
         self.setupGesture()
     }
 
@@ -51,7 +51,7 @@ final class ProfileViewController: UIViewController, TapLikedDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-   //     tableView.reloadData()
+
     }
 
     func tapLikedLabel() {
@@ -61,16 +61,15 @@ final class ProfileViewController: UIViewController, TapLikedDelegate {
 
     private func setupNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.navigationItem.title = "Профиль"
-        navigationItem.backButtonTitle = ""
+        self.navigationItem.title = "Profile"
+                
     }
 
     private func setupView() {
         view.backgroundColor = .systemGray6
         view.addSubview(tableView)
         view.addSubview(detailedAvatarView)
-  //      navigationController?.navigationBar.alpha = 0.9
-  //      navigationController?.tabBarController?.tabBar.alpha = 0.9
+
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -86,11 +85,11 @@ final class ProfileViewController: UIViewController, TapLikedDelegate {
     }
 
     private func addDataSource() {
-        dataSource.append(.init(author: "Аркадий Цареградцев", description: "Тот случай, когда фан-арт полностью вышел из под контроля! ", image: "post1", id: "001", likes: 5, views: 5))
-        dataSource.append(.init(author: "Займись собой", description: "Мы выросли на их примере, а это не может не радовать", image: "post2", id: "002", likes: 25, views: 50))
-        dataSource.append(.init(author: "Kay May", description: "S13 в родном окрасе", image: "post3", id: "003", likes: 10, views: 15))
-        dataSource.append(.init(author: "Sport Factor", description: "Тренировки тренировками, а сон по расписанию", image: "post4", id: "004", likes: 52, views: 60))
-        dataSource.append(.init(author: "Toyo Tires Russia", description: "Ландин Уильямс получил водительские права больше десяти лет назад, во времена, когда начала выходить серия фильмов «Форсаж». Помимо этого культового кинофильма Ландин «подсел» на не менее культовый японский мультсериал о дрифте Initial D", image: "post5", id: "005", likes: 30, views: 40))
+        dataSource.append(.init(author: "CJ", description: "Big smoke chill chill", image: "gta", id: "001", likes: 5, views: 5))
+        dataSource.append(.init(author: "unknown", description: "Very nice view...", image: "nature", id: "002", likes: 25, views: 50))
+        dataSource.append(.init(author: "Spotter", description: "Landing airbus is amazing!", image: "plane", id: "003", likes: 10, views: 15))
+        dataSource.append(.init(author: "Hakuna matata", description: "The best restaurant at the island Zanzibar", image: "zanzibar", id: "004", likes: 52, views: 60))
+
     }
 
     private func setupGesture() {
@@ -100,12 +99,9 @@ final class ProfileViewController: UIViewController, TapLikedDelegate {
 
     @objc func handleTapGesture(_ gestureRecognizer: UITapGestureRecognizer){
         guard self.tapGestureRecognizer === gestureRecognizer else { return }
-   //     let viewController = DetailedAvatarViewController()
-   //     present(viewController, animated: true)
         UIView.animate(withDuration: 0.5) {
             self.detailedAvatarView.alpha = 1
         }
- //       presentDetailedAvatarViewController()
     }
 
     func presentDetailedAvatarViewController() {

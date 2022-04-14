@@ -9,55 +9,41 @@ import UIKit
 
 final class ProfileHeaderView: UIView {
 
-
-     lazy var avatarImageView: UIImageView = {
+    lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "avatar"))
         imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 3
         imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.isUserInteractionEnabled = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
     private lazy var fullNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Alekhandro"
+        label.text = "Alejandro"
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private var heightConstraint: NSLayoutConstraint?
-
     private lazy var statusLabel: UILabel = {
         let label = UILabel()
-        label.text = "Good news, everybody!"
+        label.text = "Your status"
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = .gray
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private lazy var statusTextView1: UITextView = {
-        let textView = UITextView()
-        textView.backgroundColor = .lightGray
-        textView.font = .systemFont(ofSize: 14)
-        textView.textColor = .gray
-        textView.text = "Статус"
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
-    }()
-
     private lazy var setStatusButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Show status", for: .normal)
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 4
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 4, height: 4)
-        button.layer.shadowRadius = 4
-        button.layer.shadowOpacity = 0.7
+        button.setTitle("Set status", for: .normal)
+        button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
+        button.layer.cornerRadius = 10
+        button.clipsToBounds = true
         button.addTarget(self, action: #selector(self.didTapSetStatusButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -65,12 +51,8 @@ final class ProfileHeaderView: UIView {
 
     private lazy var statusTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "White your status here"
-
-        textField.keyboardType = .default
-        textField.returnKeyType = UIReturnKeyType.done
-        textField.clearButtonMode = UITextField.ViewMode.whileEditing
-        textField.keyboardAppearance = .default
+        textField.placeholder = "Type your status here"
+        textField.returnKeyType = .done
         textField.autocapitalizationType = .words
         textField.font = .systemFont(ofSize: 15)
         textField.textColor = .systemGray2
@@ -79,12 +61,9 @@ final class ProfileHeaderView: UIView {
         textField.returnKeyType = .next
         textField.keyboardType = .default
         textField.clearButtonMode = .always
-        textField.alpha = 0
         textField.translatesAutoresizingMaskIntoConstraints = false
-
         return textField
     }()
-
 
     override init(frame: CGRect) {
         super.init(frame: frame)

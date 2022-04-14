@@ -29,7 +29,6 @@
 		1FF73D3227B3D02400226299 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF73D3127B3D02400226299 /* SceneDelegate.swift */; };
 		1FF73D3927B3D02700226299 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF73D3827B3D02700226299 /* Assets.xcassets */; };
 		1FF73D3C27B3D02700226299 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF73D3A27B3D02700226299 /* LaunchScreen.storyboard */; };
-		1FF73D4427B3D1AA00226299 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF73D4327B3D1AA00226299 /* TabBarController.swift */; };
 		1FF73D4627B3DAC300226299 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF73D4527B3DAC300226299 /* FeedViewController.swift */; };
 		1FF73D4827B3DB1100226299 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF73D4727B3DB1100226299 /* ProfileViewController.swift */; };
 		1FF73D4A27B3E24D00226299 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF73D4927B3E24D00226299 /* PostViewController.swift */; };
@@ -62,7 +61,6 @@
 		1FF73D3827B3D02700226299 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FF73D3B27B3D02700226299 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FF73D3D27B3D02700226299 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1FF73D4327B3D1AA00226299 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		1FF73D4527B3DAC300226299 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		1FF73D4727B3DB1100226299 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1FF73D4927B3E24D00226299 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				1F02078927E640900054F871 /* AnimationViewController.swift */,
-				1FF73D4927B3E24D00226299 /* PostViewController.swift */,
 				1FD8913A2805A4C600382CFF /* Detailed */,
 			);
 			path = Controllers;
@@ -112,9 +109,7 @@
 		1FC4B5DF27CA9538008AFE01 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				1FF73D4727B3DB1100226299 /* ProfileViewController.swift */,
 				1FF43BA127C12240000E6DEE /* ProfileTableHederView.swift */,
-				1FA976BE27DFA72E0082DA82 /* PhotosViewController.swift */,
 				1F1FEF782805AAF90028EB65 /* AvatarTransitionAnimator.swift */,
 			);
 			path = Profile;
@@ -194,9 +189,11 @@
 				1FF73D4B27B3F6B900226299 /* InfoViewController.swift */,
 				1FC4B5E027CAA305008AFE01 /* LogInViewController.swift */,
 				1F1FEF8C2805B1980028EB65 /* MainTabBarController.swift */,
+				1FA976BE27DFA72E0082DA82 /* PhotosViewController.swift */,
+				1FF73D4927B3E24D00226299 /* PostViewController.swift */,
+				1FF73D4727B3DB1100226299 /* ProfileViewController.swift */,
 				1F1FEF822805ACA70028EB65 /* Protocol */,
 				1FF73D3D27B3D02700226299 /* Info.plist */,
-				1FF73D4327B3D1AA00226299 /* TabBarController.swift */,
 				1FC4B5DF27CA9538008AFE01 /* Profile */,
 				1FD8913D2805A6A400382CFF /* Extension */,
 				1FE7945227DA2D090099321E /* Models */,
@@ -281,7 +278,6 @@
 				1FA976BF27DFA72E0082DA82 /* PhotosViewController.swift in Sources */,
 				1F1FEF862805AD450028EB65 /* Photos.swift in Sources */,
 				1FF73D4A27B3E24D00226299 /* PostViewController.swift in Sources */,
-				1FF73D4427B3D1AA00226299 /* TabBarController.swift in Sources */,
 				1FF73D4627B3DAC300226299 /* FeedViewController.swift in Sources */,
 				1FF73D5027B4454F00226299 /* Post.swift in Sources */,
 				1F1FEF7B2805AB530028EB65 /* DetailedAvatarViewController.swift in Sources */,

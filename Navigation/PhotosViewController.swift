@@ -62,7 +62,7 @@ class PhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
-        self.title = "Фотографии"
+        self.title = "Photos"
         navigationItem.backButtonTitle = ""
     }
 
@@ -119,7 +119,7 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let viewController = DetailedPhotoViewController()
         viewController.selectedImage = collectionDataSource[indexPath.row].image
-        navigationController?.present(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
 
     }
 }

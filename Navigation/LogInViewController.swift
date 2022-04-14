@@ -9,9 +9,10 @@ import UIKit
 
 final class LogInViewController: UIViewController {
 
-//    login@mail.ru
-    private var password = "1"
-    private var login = "1"
+    
+
+    private var login = "login@mail.ru"
+    private var password = "pass"
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -34,15 +35,16 @@ final class LogInViewController: UIViewController {
         return imageView
     }()
 
-   private lazy var labelAlert: UILabel = {
+    private lazy var labelAlert: UILabel = {
         let label = UILabel()
-       label.alpha = 0
+        label.numberOfLines = 0
+        label.alpha = 0
         label.font = .systemFont(ofSize: 15, weight: .bold)
-       label.textAlignment = .center
-       label.layer.borderWidth = 3
-       label.layer.borderColor = UIColor.red.cgColor
-       label.backgroundColor = .yellow
-       label.layer.cornerRadius = 10
+        label.textAlignment = .center
+        label.layer.borderWidth = 3
+        label.layer.borderColor = UIColor.red.cgColor
+        label.backgroundColor = .yellow
+        label.layer.cornerRadius = 10
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -152,43 +154,34 @@ final class LogInViewController: UIViewController {
 
     private func setupConstraints() {
 
-        let topConstraint = self.scrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
-        let leadingConstraint = self.scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
-        let trailingConstraint = self.scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        let bottomConstraint = self.scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
 
-        let contentViewTopConstraint = self.contentView.topAnchor.constraint(equalTo: self.scrollView.topAnchor)
-        let contentViewBottomConstraint = self.contentView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor)
-        let contentViewCenterXConstraint = self.contentView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor)
-        let contentViewWidthConstraint = self.contentView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor)
-        let contentViewHeightConstraint = self.contentView.heightAnchor.constraint(equalTo: self.scrollView.heightAnchor)
-
-        let topLogoImageViewConstraint = self.logoImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 120)
-        let centerXLogoImageViewConstraint = self.logoImageView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
-        let widthLogoImageViewConstraint = self.logoImageView.widthAnchor.constraint(equalToConstant: 100)
-        let heightLogoImageViewConstraint = self.logoImageView.heightAnchor.constraint(equalToConstant: 100)
-
-        let topLoginPasswordStackViewConstraint = self.loginPasswordStackView.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor, constant: 120)
-        let leftLoginPasswordStackViewConstraint = self.loginPasswordStackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16)
-        let rightLoginPasswordStackViewConstraint = self.loginPasswordStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16)
-        let heightLoginPasswordStackViewConstraint = self.loginPasswordStackView.heightAnchor.constraint(equalToConstant: 100)
-
-        let topLogInButtonConstraint = self.logInButton.topAnchor.constraint(equalTo: self.loginPasswordStackView.bottomAnchor, constant: 16)
-        let leadingLogInButtonConstraint = self.logInButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16)
-        let trailingLogInButtonConstraint = self.logInButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
-        let heightLogInButtonConstraint = self.logInButton.heightAnchor.constraint(equalToConstant: 50)
 
         NSLayoutConstraint.activate([
-            topConstraint, leadingConstraint, trailingConstraint, bottomConstraint,
-            contentViewTopConstraint, contentViewBottomConstraint,
-            contentViewWidthConstraint, contentViewHeightConstraint,
-            contentViewCenterXConstraint, topLogoImageViewConstraint,
-            centerXLogoImageViewConstraint, widthLogoImageViewConstraint,
-            heightLogoImageViewConstraint, topLoginPasswordStackViewConstraint,
-            leftLoginPasswordStackViewConstraint, rightLoginPasswordStackViewConstraint,
-            heightLoginPasswordStackViewConstraint, topLogInButtonConstraint,
-            leadingLogInButtonConstraint, trailingLogInButtonConstraint,
-            heightLogInButtonConstraint
+            self.scrollView.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor),
+            self.scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+
+            self.contentView.topAnchor.constraint(equalTo: self.scrollView.topAnchor),
+            self.contentView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
+            self.contentView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
+            self.contentView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor),
+            self.contentView.heightAnchor.constraint(equalTo: self.scrollView.heightAnchor),
+
+            self.logoImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 120),
+            self.logoImageView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            self.logoImageView.widthAnchor.constraint(equalToConstant: 100),
+            self.logoImageView.heightAnchor.constraint(equalToConstant: 100),
+
+            self.loginPasswordStackView.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor, constant: 120),
+            self.loginPasswordStackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
+            self.loginPasswordStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
+            self.loginPasswordStackView.heightAnchor.constraint(equalToConstant: 100),
+
+            self.logInButton.topAnchor.constraint(equalTo: self.loginPasswordStackView.bottomAnchor, constant: 16),
+            self.logInButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            self.logInButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+            self.logInButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 
@@ -221,6 +214,7 @@ final class LogInViewController: UIViewController {
 
         if self.loginTextField.text == login && self.passwordTextField.text == password {
             navigationController?.pushViewController(profileViewController, animated: true)
+            
         } else if self.loginTextField.text != login && self.passwordTextField.text != password {
             let alertController = UIAlertController(title: "Access denied!",
                                                     message: "You didn't write correct password and login!",
@@ -264,30 +258,30 @@ final class LogInViewController: UIViewController {
 
             self.present(alertController, animated: true, completion: nil)
 
-    } else if self.loginTextField.text != login && self.passwordTextField.text == password {
-        let alertController = UIAlertController(title: "Access denied!",
-                                                message: "You didn't write correct login!",
-                                                preferredStyle: .alert)
+        } else if self.loginTextField.text != login && self.passwordTextField.text == password {
+            let alertController = UIAlertController(title: "Access denied!",
+                                                    message: "You didn't write correct login!",
+                                                    preferredStyle: .alert)
 
-        let actionOK = UIAlertAction(title: "OK",
-                                     style: .default,
-                                     handler: {(action:UIAlertAction!) in
-            print("OK Was pressed!")
-        })
-
-        let actionCancel = UIAlertAction(title: "Cancel",
-                                         style: .cancel,
+            let actionOK = UIAlertAction(title: "OK",
+                                         style: .default,
                                          handler: {(action:UIAlertAction!) in
-            print("Cancel was pressed!")
-        })
+                print("OK Was pressed!")
+            })
 
-        alertController.addAction(actionOK)
-        alertController.addAction(actionCancel)
+            let actionCancel = UIAlertAction(title: "Cancel",
+                                             style: .cancel,
+                                             handler: {(action:UIAlertAction!) in
+                print("Cancel was pressed!")
+            })
 
-        self.present(alertController, animated: true, completion: nil)
+            alertController.addAction(actionOK)
+            alertController.addAction(actionCancel)
 
+            self.present(alertController, animated: true, completion: nil)
+
+        }
     }
-}
 
     @objc private func kbdShow(notification: NSNotification) {
         if let kbdSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -301,8 +295,8 @@ final class LogInViewController: UIViewController {
                 let frame = self.view.safeAreaLayoutGuide.layoutFrame
                 let contentOffset: CGPoint = notification.name == UIResponder.keyboardWillHideNotification ? .zero: CGPoint(x: 0, y: heightOfContent - keyboardHeight)
                 if heightOfContent + keyboardHeight >= frame.height {
-                self.scrollView.contentOffset = contentOffset
-            }
+                    self.scrollView.contentOffset = contentOffset
+                }
             }
         }
     }
