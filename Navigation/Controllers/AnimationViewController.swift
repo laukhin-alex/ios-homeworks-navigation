@@ -93,33 +93,30 @@ class AnimationViewController: UIViewController {
         self.viewHeightConstraint = self.viewForAvatar.heightAnchor.constraint(equalToConstant: 150)
         self.viewWidthConstraint = self.viewForAvatar.widthAnchor.constraint(equalToConstant: 150)
 
-        let avatarViewTopConstraint = avatarView.topAnchor.constraint(equalTo: viewForAvatar.topAnchor)
-        let avatarViewBottomConstraint = avatarView.bottomAnchor.constraint(equalTo: viewForAvatar.bottomAnchor)
-        let avatarViewLeadConstraint = avatarView.leadingAnchor.constraint(equalTo: viewForAvatar.leadingAnchor)
-        let avatarViewTrailConstraint = avatarView.trailingAnchor.constraint(equalTo: viewForAvatar.trailingAnchor)
 
-        let imageTopConstraint = image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
-        let imageBottomConstraint = image.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        let imageLeftConstraint = image.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor)
-        let imageRightConstraint = image.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
-
-        let alphaTopConstraint = alphaView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
-        let alphaBottomConstraint = alphaView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        let alphaLeftConstraint = alphaView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor)
-        let alphaRightConstraint = alphaView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
-
-        let xMarkButtonTopConstraint = xMarkButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
-        let xMarkButtonTrailConstraint = xMarkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        let xMarkButtonHeightConstraint = xMarkButton.heightAnchor.constraint(equalToConstant: 40)
-        let xMarkButtonWidthConstraint = xMarkButton.widthAnchor.constraint(equalToConstant: 40)
 
         NSLayoutConstraint.activate([
             self.viewCenterXConstraint, self.viewCenterYConstraint,
             self.viewHeightConstraint, self.viewWidthConstraint,
-            avatarViewTopConstraint, avatarViewLeadConstraint, avatarViewTrailConstraint, avatarViewBottomConstraint,
-            imageTopConstraint, imageLeftConstraint, imageRightConstraint, imageBottomConstraint,
-            alphaTopConstraint, alphaLeftConstraint, alphaRightConstraint, alphaBottomConstraint,
-            xMarkButtonTopConstraint, xMarkButtonTrailConstraint, xMarkButtonWidthConstraint, xMarkButtonHeightConstraint
+            avatarView.topAnchor.constraint(equalTo: viewForAvatar.topAnchor),
+            avatarView.bottomAnchor.constraint(equalTo: viewForAvatar.bottomAnchor),
+            avatarView.leadingAnchor.constraint(equalTo: viewForAvatar.leadingAnchor),
+            avatarView.trailingAnchor.constraint(equalTo: viewForAvatar.trailingAnchor),
+
+            image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            image.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            image.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            image.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+
+            alphaView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            alphaView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            alphaView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            alphaView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+
+            xMarkButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            xMarkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            xMarkButton.heightAnchor.constraint(equalToConstant: 40),
+            xMarkButton.widthAnchor.constraint(equalToConstant: 40)
 
         ].compactMap({ $0 }))
     }

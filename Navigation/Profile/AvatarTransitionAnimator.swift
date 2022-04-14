@@ -88,7 +88,6 @@ class AvatarTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
         circleView.center = presentedView.center
         containerView.insertSubview(circleView, belowSubview: dismissedView)
 
-  //      dismissedView.backgroundColor = .clear
 
         UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
             dismissedView.transform = CGAffineTransform(scaleX: 0.05, y: 0.05)
@@ -104,7 +103,6 @@ class AvatarTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
     }
 
     func createCircleView(for view: UIView) -> UIView {
-    //    let d = sqrt(view.bounds.height*view.bounds.height + view.bounds.width*view.bounds.width)
         let d = view.bounds.width
 
         let circleView = UIView(frame: CGRect(x: 0, y: 0, width: d, height: d))

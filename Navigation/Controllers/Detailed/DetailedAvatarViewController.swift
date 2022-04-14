@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailedAvatarViewController: UIViewController {
-
+    
     private lazy var alphaView: UIView = {
         let view = UIView()
         view.alpha = 0.9
@@ -16,13 +16,13 @@ class DetailedAvatarViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     private lazy var detailedAvatarImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "avatar"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
+    
     lazy var closeButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 20
@@ -32,23 +32,23 @@ class DetailedAvatarViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
+    
     private let screenWidth = UIScreen.main.bounds.width
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
-
+    
     private func setupView() {
         view.addSubview(alphaView)
         view.addSubview(closeButton)
         view.addSubview(detailedAvatarImage)
         view.backgroundColor = .clear
-
+        
         NSLayoutConstraint.activate([
-
-           detailedAvatarImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            detailedAvatarImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             detailedAvatarImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             detailedAvatarImage.heightAnchor.constraint(equalToConstant: screenWidth),
             detailedAvatarImage.widthAnchor.constraint(equalToConstant: screenWidth),
@@ -62,7 +62,7 @@ class DetailedAvatarViewController: UIViewController {
             closeButton.widthAnchor.constraint(equalToConstant: 40)
         ])
     }
-
+    
     @objc private func didTapCloseButton() {
         self.dismiss(animated: true, completion: nil)
     }

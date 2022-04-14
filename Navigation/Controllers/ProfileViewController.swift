@@ -62,7 +62,7 @@ final class ProfileViewController: UIViewController, TapLikedDelegate {
     private func setupNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.title = "Profile"
-                
+
     }
 
     private func setupView() {
@@ -125,9 +125,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as? PostTableViewCell else {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
-                    return cell
-                }
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+                return cell
+            }
             cell.likedDelegate = self
 
             if liked {

@@ -13,12 +13,15 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         let view = UIView()
         view.clipsToBounds = true
         view.layer.maskedCorners = [
-            .layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner
+            .layerMinXMinYCorner,
+            .layerMaxXMinYCorner,
+            .layerMinXMaxYCorner,
+            .layerMaxXMaxYCorner
         ]
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     lazy var photoGalleryImages: UIImageView = {
         let photoGalleryImages = UIImageView()
         photoGalleryImages.layer.cornerRadius = 6

@@ -57,22 +57,22 @@ class FeedViewController: UIViewController {
         self.verticalStackView.addArrangedSubview(postButtonOne)
         self.verticalStackView.addArrangedSubview(postButtonTwo)
         
-        let topConstraint = self.verticalStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-        let leadingConstraint = self.verticalStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20)
-        let trailingConstraint = self.verticalStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20)
-        let heightConstraint = self.verticalStackView.heightAnchor.constraint(equalToConstant: 200)
-        
-        let leadingButtonOneConstraint = self.postButtonOne.leadingAnchor.constraint(equalTo: self.verticalStackView.leadingAnchor)
-        let trailingButtonOneConstraint = self.postButtonOne.trailingAnchor.constraint(equalTo: self.verticalStackView.trailingAnchor)
-        let bottomButtonOneConstraint = self.postButtonOne.topAnchor.constraint(equalTo: self.verticalStackView.topAnchor)
-        
-        
-        let leadingButtonTwoConstraint = self.postButtonTwo.leadingAnchor.constraint(equalTo: self.verticalStackView.leadingAnchor)
-        let trailingButtonTwoConstraint = self.postButtonTwo.trailingAnchor.constraint(equalTo: self.verticalStackView.trailingAnchor)
+
         
         
         NSLayoutConstraint.activate([
-            topConstraint, leadingConstraint, trailingConstraint, leadingButtonOneConstraint, trailingButtonOneConstraint, bottomButtonOneConstraint, leadingButtonTwoConstraint, trailingButtonTwoConstraint, heightConstraint
+            self.verticalStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            self.verticalStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            self.verticalStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            self.verticalStackView.heightAnchor.constraint(equalToConstant: 200),
+
+            self.postButtonOne.leadingAnchor.constraint(equalTo: self.verticalStackView.leadingAnchor),
+            self.postButtonOne.trailingAnchor.constraint(equalTo: self.verticalStackView.trailingAnchor),
+            self.postButtonOne.topAnchor.constraint(equalTo: self.verticalStackView.topAnchor),
+
+
+            self.postButtonTwo.leadingAnchor.constraint(equalTo: self.verticalStackView.leadingAnchor),
+            self.postButtonTwo.trailingAnchor.constraint(equalTo: self.verticalStackView.trailingAnchor)
         ].compactMap({ $0 }))
     }
     

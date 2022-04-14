@@ -19,7 +19,7 @@ class DetailedPhotoViewController: UIViewController {
         return view
     }()
 
-     lazy var detailedPhotoImage: UIImageView = {
+    lazy var detailedPhotoImage: UIImageView = {
         let imageView = UIImageView()
         if let image = selectedImage {
             imageView.image = UIImage(named: image)
